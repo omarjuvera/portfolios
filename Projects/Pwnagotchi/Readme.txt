@@ -27,3 +27,6 @@ Here's the video:
 https://www.youtube.com/watch?v=puOkriFPVtQ
 
 For your self-Christmas gift: https://www.amazon.com/pwnagotchi/s?k=pwnagotchi
+
+DISCLAIMER: All content in this repository is shared to showcase my projects, personal research in the form of articles, and more. In addition to educational purposes. It is not intended for any malicious use.
+Hacking without permission is illegal! Do not do it!!!
