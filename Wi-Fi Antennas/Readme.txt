@@ -1,6 +1,5 @@
 Wi-Fi Antennas
 
-This topic is just right for us since it is being covered in chapter 12.
 Within the antennas types there are two main categories: Omnidirectional and Directional
 
 Omnidirectional Antennas
