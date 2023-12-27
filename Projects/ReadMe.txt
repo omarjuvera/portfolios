@@ -1,4 +1,4 @@
 This folder contains all my Cybersecurity projects.
 
-DISCLAIMER: All the content in this repository is shared & showcase my projects, personal reasearch in the form of articles and so on. Also solely for educational purposes ONLY.
-Hacking whiteout permission is illegal! Do not do it!!!
+DISCLAIMER: All content in this repository is shared to showcase my projects, personal research in the form of articles, and more. In addition to educational purposes. It is not intended for any malicious use.
+Hacking without permission is illegal! Do not do it!!!
