@@ -21,4 +21,4 @@ Yagi & Parabolic
 Within directional antennas, as chapter 13 showed, Yagi is the highest gain antenna. Followed by Parabolic antennas.
 Therefore, if your company needs a long range antenna, Yagi is your choice. If the same company also has a budget constraint, then Parabolic would be the choice
 
-https://www.telcoantennas.com.au/buying/smart-guides/guide-to-selecting-the-right-antenna/#:~:text=In%20comparison%20to%20the%20Yagi,gain%20by%20increasing%20their%20width.
+https://www.telcoantennas.com.au/buying/smart-guides/guide-to-selecting-the-right-antenna/#:~:text=In%20comparison%20to%20the%20Yagi,gain%20by%20increasing%20their%20width
