@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Directory Content</title>
+</head>
+
+<body>
+
+    <h1>GitHub Directory Content</h1>
+
+    <ul id="directory-list"></ul>
+
+    <script>
+        const username = 'omarjuvera';
+        const repo = 'Portfolios';
+
+        // Get the current directory path from the URL
+        const currentPath = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
+        const parts = currentPath.split('/');
+        const directoryPath = parts[parts.length - 1];
+
+        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const directoryList = document.getElementById('directory-list');
+
+                data.forEach(item => {
+                    if (item.type === 'file') {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = item.download_url;
+                        link.textContent = item.name;
+                        listItem.appendChild(link);
+                        directoryList.appendChild(listItem);
+                    } else if (item.type === 'dir') {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        // Construct GitHub Pages URL for directories
+                        link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}/`;
+                        link.textContent = item.name + '/';
+                        listItem.appendChild(link);
+                        directoryList.appendChild(listItem);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching directory content:', error));
+    </script>
+
+</body>
+
+</html>
