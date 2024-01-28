@@ -37,7 +37,8 @@
                     if (item.type === 'file') {
                         const listItem = document.createElement('li');
                         const link = document.createElement('a');
-                        link.href = item.download_url;
+                        // Construct GitHub Pages URL for files
+                        link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}`;
                         link.textContent = item.name;
                         listItem.appendChild(link);
                         directoryList.appendChild(listItem);
@@ -45,7 +46,7 @@
                         const listItem = document.createElement('li');
                         const link = document.createElement('a');
                         // Construct GitHub Pages URL for directories
-                        link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}/`;
+                        link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}`;
                         link.textContent = item.name + '/';
                         listItem.appendChild(link);
                         directoryList.appendChild(listItem);
