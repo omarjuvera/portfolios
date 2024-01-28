@@ -9,9 +9,7 @@
 
 <body>
 
-    <h1 id="folder-title">GitHub Directory Content</h1>
-
-    <h2 id="breadcrumb"></h2>
+    <h1>GitHub Directory Content</h1>
 
     <ul id="directory-list"></ul>
 
@@ -34,38 +32,6 @@
             .then(response => response.json())
             .then(data => {
                 const directoryList = document.getElementById('directory-list');
-                const folderTitle = document.getElementById('folder-title');
-                const breadcrumb = document.getElementById('breadcrumb');
-
-                // Extract the last part of the directory path
-                const folderName = directoryPath.split('/').filter(Boolean).pop();
-
-                // Capitalize the first letter and make the rest lowercase
-                const formattedFolderName = folderName.charAt(0).toUpperCase() + folderName.slice(1).toLowerCase();
-
-                // Set the formatted folder name as H1 text
-                folderTitle.textContent = formattedFolderName;
-
-                // Breadcrumb logic
-                const breadcrumbPath = directoryPath.split('/').filter(Boolean);
-                breadcrumbPath.unshift('Home'); // Adding "Home" at the beginning
-
-                breadcrumbPath.forEach((path, index) => {
-                    // Capitalize the first letter and replace "-" with spaces
-                    const formattedPath = path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' ');
-
-                    // Create breadcrumb item
-                    const breadcrumbItem = document.createElement('span');
-                    breadcrumbItem.textContent = formattedPath;
-
-                    // Add separator (except for the last item)
-                    if (index < breadcrumbPath.length - 1) {
-                        breadcrumbItem.innerHTML += ' => ';
-                    }
-
-                    // Append to breadcrumb
-                    breadcrumb.appendChild(breadcrumbItem);
-                });
 
                 data.forEach(item => {
                     if (item.type === 'file') {
