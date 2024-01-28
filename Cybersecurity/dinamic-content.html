@@ -17,10 +17,14 @@
         const username = 'omarjuvera';
         const repo = 'Portfolios';
 
-        // Get the current directory path from the URL
-        const currentPath = window.location.pathname.replace(/\/$/, ''); // Remove trailing slash
-        const parts = currentPath.split('/');
-        const directoryPath = parts[parts.length - 1];
+        // Get the current script element
+        const scriptElement = document.currentScript;
+
+        // Extract the path of the script file
+        const scriptPath = scriptElement.src.split('/').slice(3, -1).join('/'); // Remove the protocol and domain
+
+        // Use the extracted path as the directory path
+        const directoryPath = scriptPath;
 
         const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
 
