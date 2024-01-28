@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website of Omar Juvera, showcasing projects, research articles, and portfolios.">
+
+    <!-- Metadata templates -->
+    <meta name="author" content="Omar Juvera">
+    <meta name="owner" content="Omar Juvera">
+    <meta name="developer" content="Omar Juvera">
+    <meta name="keywords" content="portfolio, projects, research, cybersecurity, programming, python">
+
+    <title>Portfolios</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Fixed relative to viewport */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            outline: 4px solid #2b4a5c; /* Outline color #2b4a5c */
+            box-shadow: 0 0 10px rgba(43, 74, 92, 0.5); /* Shadow color #2b4a5c */
+        }
+
+        h1, h2 {
+            margin: 0; /* Remove default margin to avoid additional spacing */
+            text-shadow: 3px 3px 5px #2b4a5c; /* More pronounced text shadow */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Add more styling as needed */
+
+        @media (max-width: 600px) {
+            main {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body role="document">
+
+    <header>
+        <h1>Portfolios</h1>
+        <h2>Portfolios GitHub Pages.</h2>
+    </header>
+
+    <main role="main">
+        <section id="introduction">
+            <p>The repository's name is self-explanatory! <br> Here, you'll find a variety of projects, personal research articles and portfolios.</p>
+        </section>
+
+        <section id="disclaimer">
+            <p><strong>DISCLAIMER:</strong> All content in this repository is shared to showcase my projects, personal research in the form of articles, and more. In addition to educational purposes. It is not intended for any malicious use. <br> <em>Hacking without permission is illegal! Do not do it!!!</em></p>
+        </section>
+
+        <section id="github-directory-content">
+            <h2>GitHub Directory Content</h2>
+            <ul id="directory-list"></ul>
+            <script>
+                const username = 'omarjuvera';
+                const repo = 'Portfolios';
+                const directoryPath = 'Articles';
+
+                const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const directoryList = document.getElementById('directory-list');
+
+                        data.forEach(item => {
+                            if (item.type === 'file') {
+                                const listItem = document.createElement('li');
+                                const link = document.createElement('a');
+                                link.href = item.download_url;
+                                link.textContent = item.name;
+                                listItem.appendChild(link);
+                                directoryList.appendChild(listItem);
+                            } else if (item.type === 'dir') {
+                                const listItem = document.createElement('li');
+                                const link = document.createElement('a');
+                                // Construct GitHub Pages URL for directories
+                                link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}/`;
+                                link.textContent = item.name + '/';
+                                listItem.appendChild(link);
+                                directoryList.appendChild(listItem);
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error fetching directory content:', error));
+            </script>
+        </section>
+    </main>
+</body>
+
+</html>
