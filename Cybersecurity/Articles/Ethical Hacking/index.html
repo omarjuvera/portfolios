@@ -73,7 +73,8 @@
 
             if (index === breadcrumbPath.length - 1) {
                 // Set H2 content to the last directory name
-                document.querySelector('h2').textContent = formattedPath;
+                const decodedDirectoryName = decodeURIComponent(formattedPath);
+                document.querySelector('h2').textContent = decodedDirectoryName;
             }
 
             breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
@@ -87,7 +88,8 @@
     <script id="h2-script">
         const currentDirectoryName = window.location.pathname.split('/').slice(-2, -1)[0];
         const formattedCurrentDirectoryName = currentDirectoryName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        document.querySelector('h2').textContent = formattedCurrentDirectoryName;
+        const decodedCurrentDirectoryName = decodeURIComponent(formattedCurrentDirectoryName);
+        document.querySelector('h2').textContent = decodedCurrentDirectoryName;
     </script>
 </body>
 
