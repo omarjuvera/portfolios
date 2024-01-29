@@ -75,14 +75,23 @@
                 // Set H2 content to the last directory name
                 const decodedDirectoryName = decodeURIComponent(formattedPath);
                 document.querySelector('h2').textContent = decodedDirectoryName;
+                breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>`;
+            } else {
+                breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
             }
-
-            breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
         });
 
         document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
         breadcrumbDiv.appendChild(breadcrumb);
     </script>
+
+    <!-- H2 Script -->
+    <script>
+        const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
+        const formattedH2Text = currentDirectory.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+        document.querySelector('h2').textContent = formattedH2Text;
+    </script>
+
 </body>
 
 </html>
