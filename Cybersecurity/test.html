@@ -10,10 +10,10 @@
 <body>
 
     <h1>GitHub Directory Content</h1>
+    <h2></h2>
     <div id="breadcrumbs"></div>
 
     <ul id="directory-list"></ul>
-
 
     <!-- GitHub API Script -->
     <script id="github-api-script">
@@ -49,31 +49,38 @@
                         directoryList.appendChild(listItem);
                     }
                 });
+
+                // Breadcrumbs Script
+                const baseUrl = `https://${username}.github.io/`;
+                const repoUrl = `${baseUrl}${repo}`;
+                const homeUrl = repoUrl; // Home breadcrumb URL
+                const currentDirectoryUrl = `${baseUrl}${repo}${directoryPath}`; // URL for the current directory
+
+                const breadcrumbDiv = document.getElementById('breadcrumbs');
+                const breadcrumbSeparator = ' > ';
+                const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
+
+                const homeIcon = '🏠'; // You can replace this with an actual home icon
+
+                const breadcrumb = document.createElement('p');
+                breadcrumb.innerHTML = `${homeIcon} <a href="${homeUrl}">${repo}</a>${breadcrumbSeparator}`;
+
+                breadcrumbPath.forEach((path, index) => {
+                    const formattedPath = path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' ');
+
+                    if (index === breadcrumbPath.length - 1) {
+                        // Set H2 content to the last directory name
+                        document.querySelector('h2').textContent = formattedPath;
+                    }
+
+                    breadcrumb.innerHTML += `<a href="${currentDirectoryUrl}/${path}/">${formattedPath}</a>${breadcrumbSeparator}`;
+                });
+
+                document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
+                breadcrumbDiv.appendChild(breadcrumb);
             })
             .catch(error => console.error('Error fetching directory content:', error));
     </script>
-
-    <!-- Breadcrumbs Script -->
-    <script id="breadcrumbs-script">
-        const baseUrl = `https://${username}.github.io/`;
-        const repoUrl = `${baseUrl}${repo}`;
-
-        const breadcrumbDiv = document.getElementById('breadcrumbs');
-        const breadcrumbSeparator = ' > ';
-        const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
-
-        const homeIcon = '🏠'; // You can replace this with an actual home icon
-
-        const breadcrumb = document.createElement('p');
-        breadcrumb.innerHTML = `${homeIcon} <a href="${baseUrl}">Home</a>${breadcrumbSeparator}<a href="${repoUrl}">${repo}</a>`;
-
-        breadcrumbPath.forEach((path, index) => {
-            const formattedPath = path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' ');
-
-            breadcrumb.innerHTML += `${breadcrumbSeparator}<a href="${repoUrl}/${path}/">${formattedPath}</a>`;
-        });
-
-        breadcrumbDiv.appendChild(breadcrumb);
-    </script>
 </body>
+
 </html>
