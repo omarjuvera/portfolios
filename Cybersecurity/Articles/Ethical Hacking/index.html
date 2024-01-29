@@ -68,7 +68,7 @@
         breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
 
         breadcrumbPath.forEach((path, index) => {
-            const formattedPath = path.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+            const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
             const pathUrl = `${repoUrl}/${path}/`;
 
             if (index === breadcrumbPath.length - 1) {
@@ -82,14 +82,6 @@
 
         document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
         breadcrumbDiv.appendChild(breadcrumb);
-    </script>
-
-    <!-- H2 Script -->
-    <script id="h2-script">
-        const currentDirectoryName = window.location.pathname.split('/').slice(-2, -1)[0];
-        const formattedCurrentDirectoryName = currentDirectoryName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        const decodedCurrentDirectoryName = decodeURIComponent(formattedCurrentDirectoryName);
-        document.querySelector('h2').textContent = decodedCurrentDirectoryName;
     </script>
 </body>
 
