@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Directory Content</title>
+</head>
+
+<body>
+
+    <h1>GitHub Directory Content</h1>
+    <h2></h2>
+    <div id="breadcrumbs"></div>
+
+    <ul id="directory-list"></ul>
+
+    <!-- GitHub API Script -->
+    <script id="github-api-script">
+        const username = 'omarjuvera';
+        const repo = 'Portfolios';
+
+        const scriptElement = document.currentScript;
+
+        const scriptPath = scriptElement.src.split('/').slice(3, -1).join('/');
+        const directoryPath = scriptPath;
+
+        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const directoryList = document.getElementById('directory-list');
+
+                data.forEach(item => {
+                    if (item.type === 'file') {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}`;
+                        link.textContent = item.name;
+                        listItem.appendChild(link);
+                        directoryList.appendChild(listItem);
+                    } else if (item.type === 'dir') {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}/`;
+                        link.textContent = item.name + '/';
+                        listItem.appendChild(link);
+                        directoryList.appendChild(listItem);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching directory content:', error));
+    </script>
+
+    <!-- Breadcrumbs Script -->
+    <script id="breadcrumbs-script">
+        const baseUrl = `https://${username}.github.io/`;
+        const repoUrl = `${baseUrl}${repo}`;
+
+        const breadcrumbDiv = document.getElementById('breadcrumbs');
+        const breadcrumbSeparator = ' > ';
+        const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
+
+        const homeIcon = '🏠'; // You can replace this with an actual home icon
+
+        const breadcrumb = document.createElement('p');
+        breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
+
+        breadcrumbPath.forEach((path, index) => {
+            const formattedPath = path.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+            const pathUrl = `${repoUrl}/${path}/`;
+
+            if (index === breadcrumbPath.length - 1) {
+                // Set H2 content to the last directory name
+                document.querySelector('h2').textContent = formattedPath;
+            }
+
+            breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
+        });
+
+        document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
+        breadcrumbDiv.appendChild(breadcrumb);
+    </script>
+
+    <!-- H2 Script -->
+    <script id="h2-script">
+        const currentDirectoryName = window.location.pathname.split('/').slice(-2, -1)[0];
+        const formattedCurrentDirectoryName = currentDirectoryName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        document.querySelector('h2').textContent = formattedCurrentDirectoryName;
+    </script>
+</body>
+
+</html>
