@@ -129,6 +129,7 @@
 
 
 	<!-- Breadcrumbs Script -->
+	<!-- 2024-02-03 -->
 	<script id="breadcrumbs-script">
 		const baseUrl = `https://${username}.github.io/`;
 		const repoUrl = `${baseUrl}${repo}`;
@@ -154,7 +155,7 @@
 				document.getElementById('dynamic-subtitle').textContent = decodedDirectoryName;
 
 				// Correct link for the last item in the breadcrumb
-				breadcrumb.innerHTML += `<a href="${baseUrl}${breadcrumbPath.join('/')}/">${formattedPath}</a>`;
+				breadcrumb.innerHTML += `<a href="${baseUrl}${breadcrumbPath.join('/')}/">${decodedDirectoryName}</a>`;
 			} else {
 				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
 			}
@@ -164,6 +165,7 @@
 
 		breadcrumbDiv.appendChild(breadcrumb);
 	</script>
+
 
 
 
