@@ -158,11 +158,12 @@
 				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
 			}
 
-			currentPath = pathUrl; // Update the current path for the next iteration
+			currentPath += `/${path}`; // Update the current path for the next iteration
 		});
 
 		breadcrumbDiv.appendChild(breadcrumb);
 	</script>
+
 
 
     <!-- Dynamic Subtitle (H2) Script -->
