@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio website of Omar Juvera, showcasing projects, research articles, and portfolios.">
+
+    <!-- Metadata templates -->
+    <meta name="author" content="Omar Juvera">
+    <meta name="owner" content="Omar Juvera">
+    <meta name="developer" content="Omar Juvera">
+    <meta name="keywords" content="portfolio, projects, research, cybersecurity, programming, python">
+
+    <title>Ethical Hacking</title>
+    <title>Portfolios</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            /* background-image: url('https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4'); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Fixed relative to viewport */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            outline: 4px solid #2b4a5c; /* Outline color #2b4a5c */
+            box-shadow: 0 0 10px rgba(43, 74, 92, 0.5); /* Shadow color #2b4a5c */
+        }
+
+        h1, h2, #breadcrumbs {
+            margin: 0; /* Remove default margin to avoid additional spacing */
+            text-shadow: 3px 3px 5px #2b4a5c; /* More pronounced text shadow */
+        }
+
+        /* breadcrumbs styling */
+        #breadcrumbs, #breadcrumbs p, #breadcrumbs a {
+            padding-top: 20px;
+            color: #fff;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Add more styling as needed */
+
+        @media (max-width: 600px) {
+            main {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body role="document">
+
+
+<header>
+	<h1 id="dynamic-title">Portfolios</h1>
+	<h2 id="dynamic-subtitle"></h2>
+	<div id="breadcrumbs"></div>
+</header>
+
+
+<main>
+	<section id="directory-list-section">
+		<ul id="directory-list"></ul>
+	</section>
+</main>
+
+
+<footer>
+
+    <!-- Dynamic Subtitle (H2) Script -->
+    <script>
+        const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
+        const formattedH2Text = currentDirectory.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+        document.getElementById('dynamic-subtitle').textContent = formattedH2Text;
+    </script>
+
+
+<!-- Dynamic Background Script -->
+	<!-- BackgroundModule.js -->
+	<script id="background-module" type="application/javascript" src="https://raw.githubusercontent.com/omarjuvera/assets/portfolios/scripts/BackgroundModule.js"></script>
+	
+	<!-- DynamicBackground.js -->
+	<script id="dynamic-background" type="application/javascript" src="https://raw.githubusercontent.com/omarjuvera/assets/portfolios/scripts/DynamicBackground.js"></script>
+<!-- Dynamic Background Script -->
+
+</script>
+
+
+</footer>
+</body>
+</html>
