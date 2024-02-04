@@ -122,19 +122,19 @@
 			.catch(error => console.error('Error fetching directory content:', error));
 	</script>
 
-    <!-- Breadcrumbs Script -->
-    <script id="breadcrumbs-script">
-        const baseUrl = `https://${username}.github.io/`;
-        const repoUrl = `${baseUrl}${repo}`;
+	<!-- Breadcrumbs Script -->
+	<script id="breadcrumbs-script">
+		const baseUrl = `https://${username}.github.io/`;
+		const repoUrl = `${baseUrl}${repo}`;
 
-        const breadcrumbDiv = document.getElementById('breadcrumbs');
-        const breadcrumbSeparator = ' > ';
-        const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
+		const breadcrumbDiv = document.getElementById('breadcrumbs');
+		const breadcrumbSeparator = ' > ';
+		const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
 
-        const homeIcon = '🏠'; // You can replace this with an actual home icon
+		const homeIcon = '🏠'; // You can replace this with an actual home icon
 
-        const breadcrumb = document.createElement('p');
-        breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
+		const breadcrumb = document.createElement('p');
+		breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
 
 		breadcrumbPath.forEach((path, index) => {
 			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
@@ -150,11 +150,11 @@
 			}
 		});
 
+		breadcrumbDiv.appendChild(breadcrumb);
 		// Remove the last separator
-		breadcrumb.innerHTML = breadcrumb.innerHTML.replace(new RegExp(`${breadcrumbSeparator}$`), '');
-        document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
-        breadcrumbDiv.appendChild(breadcrumb);
-    </script>
+		// breadcrumb.innerHTML = breadcrumb.innerHTML.replace(new RegExp(`${breadcrumbSeparator}$`), '');
+	</script>
+
 
     <!-- Dynamic Subtitle (H2) Script -->
     <script>
