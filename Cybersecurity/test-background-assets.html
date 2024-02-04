@@ -91,19 +91,15 @@
 
 <footer>
 
-    <!-- Dynamic Subtitle (H2) Script -->
-    <script>
-        const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
-        const formattedH2Text = currentDirectory.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-        document.getElementById('dynamic-subtitle').textContent = formattedH2Text;
-    </script>
+<!-- Dynamic Subtitle (H2) Script -->
+	<script id="script-dynamic-subtitle" type="application/javascript" src="https://omarjuvera.github.io/assets/portfolios/scripts/DynamicSubtitle.js"></script>
+<!-- Dynamic Subtitle (H2) Script -->
 
 
 <!-- Dynamic Background Script -->
-	<!-- BackgroundModule.js -->
+		<!-- BackgroundModule.js -->
 	<script id="background-module" type="application/javascript" src="https://omarjuvera.github.io/assets/portfolios/scripts/BackgroundModule.js"></script>
-	
-	<!-- DynamicBackground.js -->
+		<!-- DynamicBackground.js -->
 	<script id="dynamic-background" type="application/javascript" src="https://omarjuvera.github.io/assets/portfolios/scripts/DynamicBackground.js"></script>
 <!-- Dynamic Background Script -->
 
