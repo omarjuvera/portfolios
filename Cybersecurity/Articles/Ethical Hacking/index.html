@@ -174,11 +174,80 @@ fetch(apiUrl)
 <!-- Dynamic Background Script -->
 	<!-- Dynamic Background: BackgroundModule.js -->
 	<!-- External JavaScript file: BackgroundModule.js -->
-	<script id="background-module" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js"></script>
+	<!-- script id="background-module" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js"></script -->
+	<script id="script-background-module">
+// BackgroundModule.js
+const BackgroundModule = (function () {
+	// Define array of backgrounds with corresponding URLs
+	const backgrounds = [
+		{ portfolio: 'Portfolios', url: 'url(https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4)' },
+		{ portfolio: 'Cybersecurity', url: 'url(https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/images/backgrounds/cybersecurity/stock-photo.jpg)' },
+		{ portfolio: 'Python', url: 'url(path/to/image2.jpg)' },
+		// Add more portfolios and corresponding URLs as needed
+	];
+
+	function getBackgroundUrl(portfolioUrl) {
+		// Check if portfolioUrl is empty or falsy, and return the default background URL
+		if (!portfolioUrl) {
+			return backgrounds.find(bg => bg.portfolio === 'Portfolios')?.url || '';
+		}
+
+		// Check if portfolioUrl is in the available portfolios
+		const foundPortfolio = backgrounds.find(bg => bg.portfolio === portfolioUrl);
+
+		// If found, return the background URL associated with the specific portfolio
+		if (foundPortfolio) {
+			return foundPortfolio.url || '';
+		}
+
+		// If not found, return the default background URL for 'Portfolios'
+		return backgrounds.find(bg => bg.portfolio === 'Portfolios')?.url || '';
+	}
+
+	return {
+		getBackgroundUrl,
+	};
+})();
+	</script>
 	
 	<!-- Dynamic Background: DynamicBackground.js -->
 	<!-- External JavaScript file: DynamicBackground.js -->
-	<script id="dynamic-background" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js"></script>
+	<!-- script id="script-dynamic-background" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js"></script -->
+	<script id="script-dynamic-background">
+// DynamicBackground.js
+// Check if repoUrl exsists OR Define the repository URL
+const repoUrl = window.repoUrl || 'https://omarjuvera.github.io/Portfolios/';
+const portfolioUrl = getPortfolioUrl(repoUrl); // Get the portfolio URL based on the current location
+const defaultBackgroundUrl = BackgroundModule.getBackgroundUrl('Portfolios');
+
+// Function to get the portfolio URL from the current location
+function getPortfolioUrl(repoUrl) {
+	try {
+		// Sanitize the URL by removing repoUrl from the URL
+		const sanitizedUrl = window.location.href.replace(repoUrl, '');
+		// Split the sanitized URL to extract the first directory as the portfolio URL
+		return (sanitizedUrl === repoUrl || sanitizedUrl.startsWith(repoUrl)) ? '' : sanitizedUrl.split('/')[0];
+	} catch (error) {
+		// The default is portfolio: 'Portfolios'
+		console.log('Using default portfolio:', error.message);
+		return ''; // Set to default (empty string) in case of an issue
+	}
+}
+
+// Function to set the background based on the determined portfolioUrl
+function setNewBackground() {
+	try {
+		// Find the background object corresponding to portfolioUrl
+		const backgroundUrl = BackgroundModule.getBackgroundUrl(portfolioUrl);
+		document.body.style.backgroundImage = backgroundUrl;
+		console.log(`Background changed to ${portfolioUrl}`);
+	} catch (error) {
+		console.log('Using default background:', error.message);
+		document.body.style.backgroundImage = defaultBackgroundUrl; // Set to default in case of an issue
+	}
+}
+
+setNewBackground();	</script>
 </footer>
 </body>
 </html>
