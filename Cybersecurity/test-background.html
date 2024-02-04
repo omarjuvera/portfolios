@@ -90,75 +90,6 @@
 
 
 <footer>
-	<!-- GitHub API Script -->
-	<script id="github-api-script">
-		const username = 'omarjuvera';
-		const repo = 'Portfolios';
-
-		const scriptElement = document.currentScript;
-
-		const scriptPath = window.location.pathname.replace(/\/index\.html$/, '');
-		const directoryPath = window.location.pathname.replace(/^\//, '').replace(/\/index\.html$/, '');
-
-		const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
-
-		fetch(apiUrl)
-			.then(response => response.json())
-			.then(data => {
-				const directoryList = document.getElementById('directory-list');
-
-				data.forEach(item => {
-					if (item.type === 'file') {
-						const listItem = document.createElement('li');
-						const link = document.createElement('a');
-						link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}`;
-						link.textContent = item.name;
-						listItem.appendChild(link);
-						directoryList.appendChild(listItem);
-					} else if (item.type === 'dir') {
-						const listItem = document.createElement('li');
-						const link = document.createElement('a');
-						link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}/`;
-						link.textContent = item.name + '/';
-						listItem.appendChild(link);
-						directoryList.appendChild(listItem);
-					}
-				});
-			})
-			.catch(error => console.error('Error fetching directory content:', error));
-	</script>
-
-
-<!-- Breadcrumbs Script -->
-		<!-- 2024-02-03 -->
-	<script id="breadcrumbs-script">
-		const baseUrl = `https://${username}.github.io/`;
-		const repoUrl = `${baseUrl}${repo}`;
-
-		const breadcrumbDiv = document.getElementById('breadcrumbs');
-		const breadcrumbSeparator = ' > ';
-		const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
-
-		const homeIcon = '🏠'; // You can replace this with an actual home icon
-
-		function createBreadcrumbLink(path, index) {
-			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-			const pathUrl = `${repoUrl}/${breadcrumbPath.slice(0, index + 1).join('/')}/`;
-
-			return `<a href="${pathUrl}">${formattedPath}</a>`;
-		}
-
-		const breadcrumbArray = [`<a href="${repoUrl}">${homeIcon} ${repo}</a>`];
-
-		breadcrumbPath.forEach((path, index) => {
-			breadcrumbArray.push(createBreadcrumbLink(path, index));
-		});
-
-		const breadcrumbTrail = breadcrumbArray.join(breadcrumbSeparator);
-		breadcrumbDiv.innerHTML = breadcrumbTrail;
-	</script>
-
-
     <!-- Dynamic Subtitle (H2) Script -->
     <script>
         const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
@@ -169,32 +100,77 @@
 
 <!-- Dynamic Background Script -->
 	<!-- BackgroundModule.js -->
-	<!-- External JavaScript file: BackgroundModule.js -->
-	<script id="background-module" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js"></script>
-	
-	<!-- External JavaScript file: DynamicBackground.js -->
-	<script id="dynamic-background" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js"></script>
+	// DynamicBackground.js
+	// Check if repoUrl exsists OR Define the repository URL
+	const repoUrl = window.repoUrl || 'https://omarjuvera.github.io/Portfolios/';
+	const portfolioUrl = getPortfolioUrl(repoUrl); // Get the portfolio URL based on the current location
 
-	<!-- Dynamic Background Script -->
-	<script>
-		// Function to set the background based on the determined portfolio URL
-		function setNewBackground() {
-			// Find the background object corresponding to the portfolio URL
-			const background = backgrounds.find(bg => bg.portfolio === portfolioUrl);
+	// Function to get the portfolio URL from the current location
+	function getPortfolioUrl(repoUrl) {
+		try {
+			// Sanitize the URL by removing repoUrl from the URL
+			const sanitizedUrl = window.location.href.replace(repoUrl, '');
+			// Split the sanitized URL to extract the first directory as the portfolio URL
+			return (sanitizedUrl === repoUrl || sanitizedUrl.startsWith(repoUrl)) ? '' : sanitizedUrl.split('/')[0];
+		} catch (error) {
+			// The default is portfolio: 'Portfolios'
+			console.log('Using default portfolio:', error.message);
+			return ''; // Set to default (empty string) in case of an issue
+		}
+	}
 
-			// If no specific background found, use the default background for the repository
-			const backgroundImage = background ? background.url : backgrounds[0].url;
-
+	// Function to set the background based on the determined portfolioUrl
+	function setNewBackground() {
+		try {
+			// Find the background object corresponding to portfolioUrl
+			const backgroundUrl = BackgroundModule.getBackgroundUrl(portfolioUrl);
 			// Apply the background image to the document body
-			document.body.style.backgroundImage = backgroundImage;
-
-			// Log the change for debugging or informational purposes
+			document.body.style.backgroundImage = backgroundUrl;
 			console.log(`Background changed to ${portfolioUrl}`);
+		} catch (error) {
+			console.log('Using default background:', error.message);
+			const defaultBackgroundUrl = BackgroundModule.getBackgroundUrl('Portfolios');
+			document.body.style.backgroundImage = defaultBackgroundUrl; // Set to default in case of an issue
+		}
+	}
+
+	setNewBackground();
+	
+	// BackgroundModule.js
+	const BackgroundModule = (function () {
+		// Define array of backgrounds with corresponding URLs
+		const backgrounds = [
+			{ portfolio: 'Portfolios', url: 'url(https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4)' },
+			{ portfolio: 'Cybersecurity', url: 'url(https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/images/backgrounds/cybersecurity/stock-photo.jpg)' },
+			{ portfolio: 'Python', url: 'url(path/to/image2.jpg)' },
+			// Add more portfolios and corresponding URLs as needed
+		];
+
+		function getBackgroundUrl(portfolioUrl) {
+			// Check if portfolioUrl is empty or falsy, and return the default background URL
+			if (!portfolioUrl) {
+				return backgrounds.find(bg => bg.portfolio === 'Portfolios')?.url || '';
+			}
+
+			// Check if portfolioUrl is in the available portfolios
+			const foundPortfolio = backgrounds.find(bg => bg.portfolio === portfolioUrl);
+
+			// If found, return the background URL associated with the specific portfolio
+			if (foundPortfolio) {
+				return foundPortfolio.url || '';
+			}
+
+			// If not found, return the default background URL for 'Portfolios'
+			return backgrounds.find(bg => bg.portfolio === 'Portfolios')?.url || '';
 		}
 
-		// Call the function to set the background, you can trigger this based on your requirements
-		setNewBackground();
-	</script>
+		return {
+			getBackgroundUrl,
+		};
+	})();
+</script>
+
+
 </footer>
 </body>
 </html>
