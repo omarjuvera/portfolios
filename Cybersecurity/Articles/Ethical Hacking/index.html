@@ -130,46 +130,35 @@
 
 	<!-- Breadcrumbs Script -->
 	<!-- 2024-02-03 -->
-	<script id="breadcrumbs-script">
-		const baseUrl = `https://${username}.github.io/`;
-		const repoUrl = `${baseUrl}${repo}`;
+<!-- Breadcrumbs Script -->
+<script id="breadcrumbs-script">
+    const baseUrl = `https://${username}.github.io/`;
+    const repoUrl = `${baseUrl}${repo}`;
 
-		const breadcrumbDiv = document.getElementById('breadcrumbs');
-		const breadcrumbSeparator = ' > ';
-		const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
+    const breadcrumbDiv = document.getElementById('breadcrumbs');
+    const breadcrumbSeparator = ' > ';
+    const breadcrumbPath = window.location.pathname.split('/').slice(2, -1);
 
-		const homeIcon = '🏠'; // You can replace this with an actual home icon
+    const homeIcon = '🏠'; // You can replace this with an actual home icon
 
-		const breadcrumb = document.createElement('p');
-		breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
+    const breadcrumbArray = [];
+    breadcrumbArray.push(`<a href="${repoUrl}">${homeIcon} ${repo}</a>`);
 
-		let currentPath = repoUrl; // Initialize the current path
+    breadcrumbPath.forEach((path, index) => {
+        const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+        const pathUrl = `${repoUrl}/${breadcrumbPath.slice(0, index + 1).join('/')}/`;
 
-		breadcrumbPath.forEach((path, index) => {
-			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-			const pathUrl = `${currentPath}/${path}/`;
+        breadcrumbArray.push(`<a href="${pathUrl}">${formattedPath}</a>`);
+    });
 
-			if (index === breadcrumbPath.length - 1) {
-				// Set H2 content to the last directory name
-				const decodedDirectoryName = decodeURIComponent(formattedPath);
-				document.getElementById('dynamic-subtitle').textContent = decodedDirectoryName;
-
-				// Correct link for the last item in the breadcrumb
-				breadcrumb.innerHTML += `<a href="${baseUrl}${breadcrumbPath.join('/')}/">${decodedDirectoryName}</a>`;
-			} else {
-				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
-			}
-
-			currentPath += `/${path}`; // Update the current path for the next iteration
-		});
-
-		breadcrumbDiv.appendChild(breadcrumb);
-	</script>
+    const breadcrumbTrail = breadcrumbArray.join(breadcrumbSeparator);
+    breadcrumbDiv.innerHTML = breadcrumbTrail;
+</script>
 
 
 
 
-    <!-- Dynamic Subtitle (H2) Script -->
+
     <!-- Dynamic Subtitle (H2) Script -->
     <script>
         const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
