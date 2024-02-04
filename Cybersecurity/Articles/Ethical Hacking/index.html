@@ -137,9 +137,11 @@
 		const breadcrumb = document.createElement('p');
 		breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
 
+		let currentPath = repoUrl; // Initialize the current path
+
 		breadcrumbPath.forEach((path, index) => {
 			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-			const pathUrl = `${repoUrl}/${path}/`;
+			const pathUrl = `${currentPath}/${path}/`;
 
 			if (index === breadcrumbPath.length - 1) {
 				// Set H2 content to the last directory name
@@ -151,6 +153,8 @@
 			} else {
 				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
 			}
+
+			currentPath = pathUrl; // Update the current path for the next iteration
 		});
 
 		breadcrumbDiv.appendChild(breadcrumb);
