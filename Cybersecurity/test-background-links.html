@@ -90,6 +90,40 @@
 
 
 <footer>
+
+<!-- Header Handler -->
+<script>
+	const http = require('http');
+	const https = require('https');
+
+	const files = {
+		'/BackgroundModule.js': 'https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js',
+		'/DynamicBackground.js': 'https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js',
+		// Add more files and their corresponding URLs as needed
+	};
+
+	const server = http.createServer((req, res) => {
+		const requestedFile = files[req.url];
+
+		if (requestedFile) {
+			res.writeHead(200, {'Content-Type': 'application/javascript'});
+
+			// Make HTTP request to fetch script from external URL
+			https.get(requestedFile, (externalRes) => {
+				externalRes.pipe(res);
+			});
+		} else {
+			res.writeHead(404);
+			res.end();
+		}
+	});
+
+	server.listen(3000, () => {
+		console.log('Server is running on port 3000');
+	});
+</script>
+
+
     <!-- Dynamic Subtitle (H2) Script -->
     <script>
         const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
@@ -100,10 +134,10 @@
 
 <!-- Dynamic Background Script -->
 	<!-- BackgroundModule.js -->
-	<script id="background-module" type="text/javascript" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js"></script>
+	<script id="background-module" type="application/javascript" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/BackgroundModule.js"></script>
 	
 	<!-- DynamicBackground.js -->
-	<script id="dynamic-background" type="text/javascript" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js"></script>
+	<script id="dynamic-background" type="application/javascript" src="https://raw.githubusercontent.com/omarjuvera/Portfolios/assets/scripts/DynamicBackground.js"></script>
 <!-- Dynamic Background Script -->
 
 </script>
