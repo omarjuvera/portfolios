@@ -22,6 +22,7 @@ function setNewBackground() {
 	try {
 		// Find the background object corresponding to portfolioUrl
 		const backgroundUrl = BackgroundModule.getBackgroundUrl(portfolioUrl);
+		// Apply the background image to the document body
 		document.body.style.backgroundImage = backgroundUrl;
 		console.log(`Background changed to ${portfolioUrl}`);
 	} catch (error) {
