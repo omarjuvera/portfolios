@@ -140,9 +140,18 @@
 			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
 			const pathUrl = `${repoUrl}/${path}/`;
 
-			breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${index < breadcrumbPath.length - 1 ? breadcrumbSeparator : ''}`;
+			if (index === breadcrumbPath.length - 1) {
+				// Set H2 content to the last directory name
+				const decodedDirectoryName = decodeURIComponent(formattedPath);
+				document.getElementById('dynamic-subtitle').textContent = decodedDirectoryName;
+				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>`;
+			} else {
+				breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
+			}
 		});
 
+		// Remove the last separator
+		breadcrumb.innerHTML = breadcrumb.innerHTML.replace(new RegExp(`${breadcrumbSeparator}$`), '');
         document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
         breadcrumbDiv.appendChild(breadcrumb);
     </script>
