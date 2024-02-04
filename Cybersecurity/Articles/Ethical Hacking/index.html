@@ -159,16 +159,44 @@
 	</script>
 
 
-
-
-
-
     <!-- Dynamic Subtitle (H2) Script -->
     <script>
         const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
         const formattedH2Text = currentDirectory.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
         document.getElementById('dynamic-subtitle').textContent = formattedH2Text;
     </script>
+
+	<!-- Dynamic Background Script -->
+	<script id="dynamic-background-script">
+		const backgrounds = [
+			{ portfolio: 'Portfolios', url: 'url(https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4)' },
+			{ portfolio: 'Cybersecurity', url: 'url(https://www.shutterstock.com/shutterstock/photos/2037142181/display_1500/stock-photo-background-concept-of-data-protection-and-cybersecurity-technology-privacy-there-is-a-key-on-the-2037142181.jpg)' },
+			{ portfolio: 'Python', url: 'url(path/to/image2.jpg)' },
+			// Add more portfolios and corresponding URLs as needed
+		];
+
+		// Check if repoUrl is already defined, otherwise define it
+		const repoUrl = window.repoUrl || 'https://omarjuvera.github.io/Portfolios/';
+
+		function getPortfolioUrl() {
+			const pathArray = window.location.pathname.split('/');
+			return pathArray.length > 2 ? pathArray[2] : null;
+		}
+
+		function setNewBackground() {
+			const portfolioUrl = getPortfolioUrl();
+			const background = backgrounds.find(bg => bg.portfolio === portfolioUrl);
+
+			// If no specific background found, use the default background for the repository
+			const backgroundImage = background ? background.url : backgrounds[0].url;
+
+			document.body.style.backgroundImage = backgroundImage;
+			console.log(`Background changed to ${portfolioUrl}`);
+		}
+
+		// Call the function to change the background, you can trigger this based on your requirements
+		setNewBackground();
+	</script>
 </footer>
 </body>
 </html>
