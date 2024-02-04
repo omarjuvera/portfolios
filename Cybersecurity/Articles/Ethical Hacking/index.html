@@ -92,7 +92,7 @@
 		const scriptElement = document.currentScript;
 
 		const scriptPath = window.location.pathname.replace(/\/index\.html$/, '');
-		const directoryPath = scriptPath;
+		const directoryPath = window.location.pathname.replace(/^\//, '').replace(/\/index\.html$/, '');
 
 		const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
 
@@ -136,19 +136,12 @@
         const breadcrumb = document.createElement('p');
         breadcrumb.innerHTML = `${homeIcon} <a href="${repoUrl}">${repo}</a>${breadcrumbSeparator}`;
 
-        breadcrumbPath.forEach((path, index) => {
-            const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-            const pathUrl = `${repoUrl}/${path}/`;
+		breadcrumbPath.forEach((path, index) => {
+			const formattedPath = path.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
+			const pathUrl = `${repoUrl}/${path}/`;
 
-            if (index === breadcrumbPath.length - 1) {
-                // Set H2 content to the last directory name
-                const decodedDirectoryName = decodeURIComponent(formattedPath);
-                document.getElementById('dynamic-subtitle').textContent = decodedDirectoryName;
-                breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>`;
-            } else {
-                breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
-            }
-        });
+			breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${index < breadcrumbPath.length - 1 ? breadcrumbSeparator : ''}`;
+		});
 
         document.body.insertBefore(breadcrumbDiv, document.getElementById('directory-list'));
         breadcrumbDiv.appendChild(breadcrumb);
