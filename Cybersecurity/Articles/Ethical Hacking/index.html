@@ -4,54 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Directory Content</title>
+    <meta name="description" content="Portfolio website of Omar Juvera, showcasing projects, research articles, and portfolios.">
+
+    <!-- Metadata templates -->
+    <meta name="author" content="Omar Juvera">
+    <meta name="owner" content="Omar Juvera">
+    <meta name="developer" content="Omar Juvera">
+    <meta name="keywords" content="portfolio, projects, research, cybersecurity, programming, python">
+
+    <title>Ethical Hacking</title>
+    <title>Portfolios</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://repository-images.githubusercontent.com/736133296/80d2132b-b291-4b86-a4b6-6b66250785c4');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center; /* Center the background image */
+            background-attachment: fixed; /* Fixed relative to viewport */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            outline: 4px solid #2b4a5c; /* Outline color #2b4a5c */
+            box-shadow: 0 0 10px rgba(43, 74, 92, 0.5); /* Shadow color #2b4a5c */
+        }
+
+        h1, h2 {
+            margin: 0; /* Remove default margin to avoid additional spacing */
+            text-shadow: 3px 3px 5px #2b4a5c; /* More pronounced text shadow */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        /* Add more styling as needed */
+
+        @media (max-width: 600px) {
+            main {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body role="document">
 
-    <h1>GitHub Directory Content</h1>
-    <h2></h2>
-    <div id="breadcrumbs"></div>
 
-    <ul id="directory-list"></ul>
+<header>
+	<h1 id="dynamic-title">Portfolios</h1>
+	<h2 id="dynamic-subtitle"></h2>
+	<div id="breadcrumbs"></div>
+</header>
 
-    <!-- GitHub API Script -->
-    <script id="github-api-script">
-        const username = 'omarjuvera';
-        const repo = 'Portfolios';
 
-        const scriptElement = document.currentScript;
+<main>
+	<section id="directory-list-section">
+		<ul id="directory-list"></ul>
+	</section>
+</main>
 
-        const scriptPath = scriptElement.src.split('/').slice(3, -1).join('/');
-        const directoryPath = scriptPath;
 
-        const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
+<footer>
+	<!-- GitHub API Script -->
+	<script id="github-api-script">
+		const username = 'omarjuvera';
+		const repo = 'Portfolios';
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => {
-                const directoryList = document.getElementById('directory-list');
+		const scriptElement = document.currentScript;
 
-                data.forEach(item => {
-                    if (item.type === 'file') {
-                        const listItem = document.createElement('li');
-                        const link = document.createElement('a');
-                        link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}`;
-                        link.textContent = item.name;
-                        listItem.appendChild(link);
-                        directoryList.appendChild(listItem);
-                    } else if (item.type === 'dir') {
-                        const listItem = document.createElement('li');
-                        const link = document.createElement('a');
-                        link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}/`;
-                        link.textContent = item.name + '/';
-                        listItem.appendChild(link);
-                        directoryList.appendChild(listItem);
-                    }
-                });
-            })
-            .catch(error => console.error('Error fetching directory content:', error));
-    </script>
+		const scriptPath = scriptElement.src.split('/').slice(3, -1).join('/');
+		const directoryPath = scriptPath;
+
+		const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${directoryPath}`;
+
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				const directoryList = document.getElementById('directory-list');
+
+				data.forEach(item => {
+					if (item.type === 'file') {
+						const listItem = document.createElement('li');
+						const link = document.createElement('a');
+						link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}`;
+						link.textContent = item.name;
+						listItem.appendChild(link);
+						directoryList.appendChild(listItem);
+					} else if (item.type === 'dir') {
+						const listItem = document.createElement('li');
+						const link = document.createElement('a');
+						link.href = `https://${username}.github.io/${repo}${directoryPath}/${item.name}/`;
+						link.textContent = item.name + '/';
+						listItem.appendChild(link);
+						directoryList.appendChild(listItem);
+					}
+				});
+			})
+			.catch(error => console.error('Error fetching directory content:', error));
+	</script>
 
     <!-- Breadcrumbs Script -->
     <script id="breadcrumbs-script">
@@ -74,7 +143,7 @@
             if (index === breadcrumbPath.length - 1) {
                 // Set H2 content to the last directory name
                 const decodedDirectoryName = decodeURIComponent(formattedPath);
-                document.querySelector('h2').textContent = decodedDirectoryName;
+                document.getElementById('dynamic-subtitle').textContent = decodedDirectoryName;
                 breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>`;
             } else {
                 breadcrumb.innerHTML += `<a href="${pathUrl}">${formattedPath}</a>${breadcrumbSeparator}`;
@@ -85,12 +154,13 @@
         breadcrumbDiv.appendChild(breadcrumb);
     </script>
 
-    <!-- H2 Script -->
+    <!-- Dynamic Subtitle (H2) Script -->
     <script>
         const currentDirectory = window.location.pathname.split('/').filter(Boolean).pop();
         const formattedH2Text = currentDirectory.replace(/-/g, ' ').replace(/%20/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Convert to title case
-        document.querySelector('h2').textContent = formattedH2Text;
+        document.getElementById('dynamic-subtitle').textContent = formattedH2Text;
     </script>
+</footer>
 
 </body>
 
