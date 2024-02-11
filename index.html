@@ -85,44 +85,6 @@
 			<p>Everything on this site has been created by me, including the pages, styles, and code. In addition to the featured topics, this GitPage site also highlights some hidden yet remarkable features that operate seamlessly in the background, such as dynamic content as well as some dynamic styling. Everything meticulously hardcoded by yours truly.</p>
 			<p>I hope you find the content engaging, and feel free to explore the code. I  welcome any comments and feedback you may have.</p>
         </section>
-
-        <section id="github-directory-content">
-            <h2>GitHub Directory Content</h2>
-            <ul id="directory-list"></ul>
-            <script>
-                const username = 'omarjuvera';
-                const repo = 'Portfolios';
-                const directoryPath = 'Cybersecurity';
-
-                const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/`;
-
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        const directoryList = document.getElementById('directory-list');
-
-                        data.forEach(item => {
-                            if (item.type === 'file') {
-                                const listItem = document.createElement('li');
-                                const link = document.createElement('a');
-                                link.href = item.download_url;
-                                link.textContent = item.name;
-                                listItem.appendChild(link);
-                                directoryList.appendChild(listItem);
-                            } else if (item.type === 'dir') {
-                                const listItem = document.createElement('li');
-                                const link = document.createElement('a');
-                                // Construct GitHub Pages URL for directories
-                                link.href = `https://${username}.github.io/${repo}/${directoryPath}/${item.name}/`;
-                                link.textContent = item.name + '/';
-                                listItem.appendChild(link);
-                                directoryList.appendChild(listItem);
-                            }
-                        });
-                    })
-                    .catch(error => console.error('Error fetching directory content:', error));
-            </script>
-        </section>
     </main>
 </body>
 
