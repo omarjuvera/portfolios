@@ -74,6 +74,7 @@ def verify(source, choice):
 
         return choice
 
+    menu = choice
     if source == "main":
         if menu == "1" or menu == "2" or menu == "3" or menu == "4": return choice
         
@@ -90,7 +91,6 @@ def verify(source, choice):
         return verify(source, menu)
 
 def vendingMachine(menu, choice, quantity):
-    """
     menuMain = msg + "\n" + "1 - Hot Drinks "
     menuMain = msg + "\n" + "2 - Cold Drinks"
     menuMain = msg + "\n" + "3 - Food"
@@ -103,7 +103,6 @@ def vendingMachine(menu, choice, quantity):
     else:
         print("Invalid choice. Please try again.")
         return invalidChoice()
-    """
 
 # Needs no introduction
 def main():

@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
+Created on Mon Feb  5 19:22:05 2024
 
-This is a temporary script file.
+@author: Omar Juvera
 """
-
 
 # Inventory Menu (nested dictionary)
 inventory = {
@@ -44,42 +43,71 @@ def get_menu_main(inventory):
     menu.append("?: ")
     return "\n".join(menu)
 
-
-def vending_machine(item):
-    print(f"Sorry, we're currently out of {item}. Apologies for the inconvenience.")
-
-def verify(inventory):
-    while True:
-        try:
-            choice = int(input(get_menu_main(inventory)))
-            if 1 <= choice <= len(inventory):
-                return list(inventory.keys())[choice - 1]
-            else:
-                print("You pressed the wrong button! Please try again.")
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
-
+'''
 def verify(choice, inventory):
     while True:
         try:
             choice = int(choice)
+            # Get the key corresponding to the user's choice
             if 1 <= choice <= len(inventory):
-                return list(inventory.keys())[choice - 1]
+            # Get the key corresponding to the user's choice
+                menu_main = list(inventory.keys())[choice - 1]
+                return menu_main
             else:
-                print("You pressed the wrong button! Please try again.")
+                # Trigger the except block by setting choice to 'invalid'/a non-integer value
+                # Without this else, it will loop forever, if the user enters an int outside the range of inventory (1 ~ 4)
+                # choice = 'invalid'
+                raise ValueError
+                #raise ValueError("\nYou pressed the wrong button! Please try again.")
+        #except ValueError as e:
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("\nYou pressed the wrong button! Please try again.")
+            #print(e)
+            choice = input( get_menu_main(inventory) )
+'''
+def verify(choice, inventory):
+    while True:
+        try:
+            choice = int(choice)
+        except:
+            print("\n\tYou pressed the wrong button! Please try again.")
+            choice = input( get_menu_main(inventory) )
+
+        try:
+            if 1 <= choice <= len(inventory):
+                # Get the key corresponding to the user's choice
+                menu_main = list(inventory.keys())[choice - 1]
+                return menu_main
+            else:
+                # Trigger the except block by raising an exception
+                # Without this else condition, it will loop forever, if the user enters an int outside the range of inventory (1 ~ 4)
+                raise Exception("\nYou pressed the wrong button! Please try again.")
+        except:
+            print("\n\tYou pressed the wrong button! Please try again.")
+            choice = input( get_menu_main(inventory) )
 
 
 
 
+#def vending_machine(choice, quantity=None):
+def vending_machine(item):
+    print(f"\n\tSorry, we're currently out items from section: {item}. \n\tApologies for the inconvenience.")
+
+
+# Needs no introduction
 def main():
-    msg = "Welcome to SMC Python vending machine. Press a the corresponding button to order"
+    msg: str = "Welcome to SMC Python vending machine. Press a the corresponding botton to order"
+    menu: str = ""
+    choice: str = ""
+    quantity: str = ""
     global inventory
 
-    choice = verify(inventory)
+    print(msg)
+    menu = get_menu_main(inventory)
+    choice = input(menu)
+    
+    choice = verify(choice, inventory)
     vending_machine(choice)
 
-if __name__ == "__main__":
-    main()
+# Excecute code
+main()

@@ -62,35 +62,35 @@ def menuSnacks():
     menu = input(menu)
     menu = verify("snacks", menu)
 
-def verify(source, choice):
+def verify(source, menu):
     msg: str = "You pressed the wrong button. Please try again"
 
     if source != "main":
-        if choice == "x": 
+        if menu == "x": 
             return menuMain()
-        elif choice == "a" or choice == "b" or choice == "c" or choice == "d": 
-            return choice
+        elif menu == "a" or menu == "b" or menu == "c" or menu == "d": 
+            return menu
         # any other entry must be either "main" or incorrect
 
-        return choice
+        return menu
 
     if source == "main":
-        if menu == "1" or menu == "2" or menu == "3" or menu == "4": return choice
+        if menu == "1" or menu == "2" or menu == "3" or menu == "4": return menu
         
     elif source == "cold":
-        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return choice
+        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return menu
     elif source == "hot":
-        if menu == "a" or menu == "b" or menu == "c" or menu == "d" or menu == "e": return choice
+        if menu == "a" or menu == "b" or menu == "c" or menu == "d" or menu == "e": return menu
     elif source == "food":
-        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return choice
+        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return menu
     elif source == "snacks":
-        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return choice
+        if menu == "a" or menu == "b" or menu == "c" or menu == "d": return menu
     else:
         print(msg)
         return verify(source, menu)
 
 def vendingMachine(menu, choice, quantity):
-    """
+    msg: str = ""
     menuMain = msg + "\n" + "1 - Hot Drinks "
     menuMain = msg + "\n" + "2 - Cold Drinks"
     menuMain = msg + "\n" + "3 - Food"
@@ -102,8 +102,7 @@ def vendingMachine(menu, choice, quantity):
         return choice
     else:
         print("Invalid choice. Please try again.")
-        return invalidChoice()
-    """
+        #return invalidChoice()
 
 # Needs no introduction
 def main():
