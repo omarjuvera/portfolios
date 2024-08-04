@@ -19,7 +19,7 @@ header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	text-align: center;
+	text-align: center; /* Credit to Paulie_D: https://stackoverflow.com/questions/78830448/css-flex-align-items-center-wont-center-all-the-elements-in-the-container-in-s  */
 
 	margin-left: 20px;
 	margin-right: 20px;
