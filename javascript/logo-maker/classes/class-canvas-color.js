@@ -37,16 +37,29 @@ class LogoCanvasColor {
 			this.labelColor1.textContent = "Solid color:";
 			this.labelColor2.style.display = "none";
 			this.color2.style.display = "none";
-			this.type = "solid";
+			this.setBackground("solid");
 		}
 		else if ( this.backgroundType.value != "solid" && this.type === "solid") {
 			this.labelColor1.textContent = "Gradient color 1:";
 			this.labelColor2.style.display = "block";
 			this.color2.style.display = "block";
-			this.type = "gradient";
+			this.setBackground("gradient");
 		}
 
 		//this.updateBackgroundColor();
+	}
+
+	setBackground (type) {
+		switch (type) {
+			case "solid":
+				this.type = "solid";
+				this.canvas.style.background = this.color1.value;
+			case "gradient":
+				this.type = "gradient";
+				const color2 = this.color2.value;
+				const gradient = this.getGradient(colorType, color1, color2);
+				this.canvas.style.background = gradient;
+			}
 	}
 
 	updateBackgroundColor() {
