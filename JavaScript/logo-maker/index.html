@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- SEO -->
+		<title>Logo Maker by Omar Juvera</title>
+		<meta name="description" content="Create custom logos with the Logo Maker project by Omar Juvera, a student of Santa Monica College's CS 81 JavaScript class.">
+		<meta name="keywords" content="Logo Maker, custom logos, Omar Juvera, Santa Monica College, CS 81, JavaScript project">
+		<meta name="author" content="Omar Juvera">
+		<meta name="robots" content="index, follow">
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content="Logo Maker by Omar Juvera">
+		<meta property="og:description" content="Create custom logos with the Logo Maker project by Omar Juvera, a student of Santa Monica College's CS 81 JavaScript class.">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://programming.juvera.me/javascript/logo-maker/">
+		<meta property="og:image" content="https://programming.juvera.me/javascript/logo-maker/logo-maker-thumbnail.jpeg">
+
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Logo Maker by Omar Juvera">
+		<meta name="twitter:description" content="Create custom logos with the Logo Maker project by Omar Juvera, a student of Santa Monica College's CS 81 JavaScript class.">
+		<meta name="twitter:image" content="https://programming.juvera.me/javascript/logo-maker/logo-maker-thumbnail.jpeg">
+		
+		<!-- X (formerly Twitter) Card Meta Tags -->
+		<meta name="x:card" content="summary_large_image">
+		<meta name="x:title" content="Logo Maker by Omar Juvera">
+		<meta name="x:description" content="Create custom logos with the Logo Maker project by Omar Juvera, a student of Santa Monica College's CS 81 JavaScript class.">
+		<meta name="x:image" content="https://programming.juvera.me/javascript/logo-maker/logo-maker-thumbnail.jpeg">
+
+		<!-- Schema.org Markup -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Logo Maker by Omar Juvera",
+			"url": "https://programming.juvera.me/javascript/logo-maker/",
+			"author": {
+				"@type": "Person",
+				"name": "Omar Juvera"
+			},
+			"description": "Create custom logos with the Logo Maker project by Omar Juvera, a student of Santa Monica College's CS 81 JavaScript class."
+		}
+		</script>
+	<!-- SEO: End -->
+
+	<!-- Favicon -->
+		<!-- ICO fallback -->
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+		<!-- High-resolution WebP favicons -->
+		<link rel="icon" sizes="1024x1024" href="favicon-1024x1024.webp" type="image/webp">
+		<link rel="icon" sizes="128x128" href="favicon-128x128.webp" type="image/webp">
+		<link rel="icon" sizes="64x64" href="favicon-64x64.webp" type="image/webp">
+		<link rel="icon" sizes="48x48" href="favicon-48x48.webp" type="image/webp">
+		<link rel="icon" sizes="32x32" href="favicon-32x32.webp" type="image/webp">
+		<link rel="icon" sizes="16x16" href="favicon-16x16.webp" type="image/webp">
+
+		<!-- PNG fallbacks -->
+		<link rel="icon" sizes="1024x1024" href="favicon-1024x1024.png" type="image/png">
+		<link rel="icon" sizes="128x128" href="favicon-128x128.png" type="image/png">
+		<link rel="icon" sizes="64x64" href="favicon-64x64.png" type="image/png">
+		<link rel="icon" sizes="48x48" href="favicon-48x48.png" type="image/png">
+		<link rel="icon" sizes="32x32" href="favicon-32x32.png" type="image/png">
+		<link rel="icon" sizes="16x16" href="favicon-16x16.png" type="image/png">
+
+	<!-- CSS -->
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans|Lato|Montserrat|Raleway|Poppins|Source+Sans+Pro|Nunito|Oswald|Merriweather|Lora|Playfair+Display|Rubik|Libre+Baskerville|Work+Sans|Zilla+Slab|Inconsolata|Quicksand|Lobster|Teko|Exo+2|Abril+Fatface|Oxygen|Amatic+SC|Varela+Round|PT+Sans|PT+Serif|Fira+Sans|Pacifico|Bebas+Neue|Concert+One|Handlee|Alfa+Slab+One|Anton|Cookie|Fredoka+One|Kaushan+Script|Permanent+Marker|Satisfy|Titillium+Web|Alegreya|Arvo|Bitter|Cabin|Catamaran|Caveat|Coustard|Crete+Round|Dosis|Encode+Sans|Fjalla+One|Fira+Sans+Condensed|Gentium+Book+Basic|Great+Vibes|Josefin+Sans|Lobster+Two|Merriweather+Sans|Muli|Noto+Serif|PT+Mono|Pathway+Gothic+One|Playfair+Display+SC|Poiret+One|Rokkitt|Rye|Sarala|Secular+One|Space+Mono|Spectral|Syne|Tinos|Vast+Shadow|Work+Sans+SemiBold|Yellowtail|Zilla+Slab+Highlight">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">  <!-- Footer Font -->
+
+		<!-- Project CSS -->
+		<link rel="stylesheet" href="css/document.css">
+		<link rel="stylesheet" href="css/tabs.css">
+		<link rel="stylesheet" href="css/logo-maker.css">
+		<link rel="stylesheet" href="css/shapes.css">
+		<link rel="stylesheet" href="css/footer.css">
+
+	<!-- JavaScript -->
+		<!-- Classes -->
+		<script type="module" src="classes/class-tabs.js"></script>
+		<script type="module" src="classes/class-font-samples.js"></script>
+		<script type="module" src="classes/class-shapes.js"></script> <!-- Logo Shapes -->
+		<script type="module" src="classes/class-canvas-color.js"></script> <!-- Logo Background Color -->
+		<script type="module" src="classes/class-caption.js"></script> <!-- Logo Caption Text -->
+</head>
+<body>
+
+<header>
+	<h1>Santa Monica College Project - JavaScript</h1>
+	<h2>Logo Maker</h2>
+</header>
+
+<main>
+	<nav id="tabs" class="tabs">
+		<button class="tab active" data-tab="about">About</button>
+		<button class="tab" data-tab="how-to">How-To</button>
+		<button class="tab" data-tab="font-samples">Font Samples</button>
+		<button class="tab" data-tab="logo-maker">Logo Maker</button>
+		<!-- Add more tabs as needed -->
+	</nav>
+
+
+<!-- Tab Content: About -->
+	<section id="about" class="tab-content active">
+		<h2>About the Logo Maker</h2>
+		<p>The Logo Maker is a user-friendly JavaScript app project designed to help you create custom logos effortlessly. This app provides a range of features to make the process easy and enjoyable.</p>
+
+		<h3>Pure JavaScript!</h3>
+		<ul>
+			<li>Built entirely with vanilla JavaScript!</li>
+			<li>100% pure JavaScript</li>
+			<li>No libraries or frameworks!</li>
+			<li>Unadulterated JavaScript means a focus on core language features!</li>
+			<li>Standard JavaScript throughout for consistency and performance!</li>
+			<li>Pure JavaScript implementation from start to finish!</li>
+			<li>Is there another way to say it?</li>
+		</ul>
+
+		<h3>Fonts</h3>
+		<ul>
+			<li>Utilizes <a href="https://fonts.google.com" target="_blank">Google Fonts</a> for a consistent look across devices.</li>
+			<li>A total of 74 fonts available!</li>
+			<li>The style of the font is completely customizable:
+				<ul>
+					<li>Font type</li>
+					<li>Size</li>
+					<li>Boldness</li>
+					<li>Color</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h3>Logo Shapes</h3>
+		<ul>
+			<li>A total of 42 logo shapes to choose from.</li>
+			<li>Customize the color of each shape, regardless of complexity.</li>
+		</ul>
+
+		<h3>Logo Shapes</h3>
+		<ul>
+			<li>A total of 42 logo shapes to choose from.</li>
+			<li>Customize the color of each shape, regardless of complexity.</li>
+		</ul>
+
+		<h3>Logo Shapes</h3>
+		<ul>
+			<li>A total of 42 logo shapes to choose from.</li>
+			<li>Customize the color of each shape, regardless of complexity.</li>
+		</ul>
+
+		<h3>Getting Started</h3>
+		<p>To get started, simply navigate to the "Logo Maker" tab and follow the step-by-step instructions to create your logo. You can customize shapes, add text, and adjust various settings to make your logo truly unique.</p>
+
+		<h3>Contact Us</h3>
+		<p>If you have any questions, feedback, or need assistance, feel free to reach out.</p>
+
+		<h3>Support and Updates</h3>
+		<p>ALthough this is a school project, I plan to keep on improving the Logo Maker, your feedback will be greatly  appreciated.</p>
+
+		<p>Thank you for using our Logo Maker. Hopefully you find it helpful and easy to use!</p>
+
+
+	</section>
+
+
+
+<!-- Tab Content: How To -->
+	<section id="how-to" class="tab-content">
+		<h2>How To Use the Logo Maker</h2>
+		<p>Welcome to the Logo Maker! Follow these steps to create a custom logo for your needs:</p>
+
+		<h3>1. Choose a Shape</h3>
+		<p>Use the dropdown menu to select a shape for your logo. You can pick from various predefined shapes such as "Space Invader" or "Star". The selected shape will appear in the preview area.</p>
+
+		<h3>2. Customize Shape Size</h3>
+		<p>Adjust the size of the shape using the size slider. The shape will scale proportionally as you move the slider. This allows you to fit the shape to your desired dimensions.</p>
+
+		<h3>3. Select Shape Color</h3>
+		<p>Pick a color for your shape using the color picker. You can choose a solid color or apply a gradient effect. The shape's color will update in real-time as you make changes.</p>
+
+		<h3>4. Add Text</h3>
+		<p>Type your desired text into the text box under the "Caption Styling Tools" section. The text will automatically appear on the logo. You can customize the text's font, weight, size, color, and position.</p>
+
+		<h3>5. Customize Text Appearance</h3>
+		<p>Adjust the appearance of your text by selecting options from the "Caption Styling Tools". Choose a font, set the font weight, adjust the font size, and select the font color. You can also position the text by specifying X and Y coordinates.</p>
+
+		<h3>6. Preview and Save</h3>
+		<p>Review your logo in the preview area. Make any final adjustments to the shape or text as needed. Once you're satisfied with your design, save your logo using the save button provided.</p>
+
+		<h3>Additional Tips</h3>
+		<ul>
+			<li>Ensure that the text you enter is sanitized for security purposes.</li>
+			<li>Experiment with different shapes and colors to find the best combination for your logo.</li>
+			<li>Use the font weight and size options to make your text stand out.</li>
+		</ul>
+
+		<p>If you have any questions or need further assistance, please refer to the FAQ section (coming soon) or contact support.</p>
+	</section>
+
+
+<!-- Tab Content: Font Samples -->
+	<section id="font-samples" class="tab-content">
+		<h2>Font Samples</h2>
+		<p>Here you can see samples of the different font options available in the app.</p>
+
+		<h3>Each font responds to styling differently</h3>
+		<p>While a font may be able to change to a light bold style, others may not. This is where this section comes in handy. You can style a font and see its effects to check if the style you want is compatible with that font. At the same time, you can see all the fonts available in this app.</p>
+
+		<p>Each grid card consists of:</p>
+		<ul>
+			<li>Font Name</li>
+			<li>Sample Text</li>
+		</ul>
+
+		<h3>Available Fonts</h3>
+		<p>I have integrated a variety of fonts from Google Fonts, 74 fonts in total, ensuring a wide range of styles to choose from. Whether you need a classic serif, a modern sans-serif, or something more decorative, you'll find an option that suits your needs.</p>
+
+		<h3>Customizing Fonts</h3>
+		<p>Customization options include:</p>
+		<ul>
+			<li>Changing the font type</li>
+			<li>Adjusting the font size</li>
+			<li>Modifying the font weight (light, normal, bold)</li>
+			<li>Selecting the font color</li>
+		</ul>
+
+		<p>By experimenting with these options, you can create a unique and visually appealing logo that stands out.</p>
+
+
+	<!-- Font Samples -->
+		<fieldset id="style-tools-font-samples" class="style-tools">
+		<legend>Styling Tools</legend>
+
+			<label for="fontSize">Font Size:</label>
+			<input type="number" id="fontSize" value="16" min="8" max="72" step="1">
+
+			<label for="fontWeight">Font Weight:</label>
+			<select id="fontWeight">
+				<option value="100">lighter</option>
+				<option value="300">light</option>
+				<option value="400" selected>normal</option>
+				<option value="700">bold</option>
+				<option value="800">bolder</option>
+				<option value="900">super bold</option>
+			</select>
+
+			<label for="fontColor">Font Color:</label>
+			<input type="color" id="fontColor" value="#000000">
+		</fieldset>
+
+		<!-- Masonry gallery -->
+		<div class="masonry" id="masonry">
+			<!-- Dynamic JavaScript Content: Font samples -->
+		</div>
+	</section> <!-- End: Font samples -->
+
+
+<!-- Tab Content: Logo Maker -->
+	<section id="logo-maker" class="tab-content">
+		<h2>Logo Maker</h2>
+		<p>This section contains the JavaScript Logo Maker. For information on how to use it, head to the About tab.</p>
+
+
+	<!-- Background styling tools -->
+		<fieldset id="background-styling-tools" class="style-tools">
+			<legend>Canvas Styling Tools</legend>
+
+			<label for="background-color-type">Background type:</label>
+			<select id="background-color-type">
+				<option value="solid" selected="selected">Solid Color</option>
+				<option value="linear">Gradient: Linear</option>
+				<option value="radial">Gradient: Radial</option>
+				<option value="conic">Gradient: Conic</option>
+			</select>
+
+			<label for="background-color-1">Solid color:</label>
+			<input type="color" id="background-color-1" value="#ffffff">
+
+			<label for="background-color-2" style="display: none;">Gradient color 2:</label>
+			<input type="color" id="background-color-2" value="#ffffff" style="display: none;">
+		</fieldset>
+
+
+	<!-- Shape styling tools -->
+		<fieldset id="style-tools-shape" class="style-tools">
+			<legend>Shape Styling Tools</legend>
+
+			<label for="shape-menu">Choose a shape:</label>
+			<select id="shape-menu">
+				<option value="" selected="selected">--Select a Shape--</option>
+			</select>
+
+			<label for="shape-size">Shape size (%):</label>
+			<input type="number" id="shape-size" value="100" min="10" max="400" step="1">
+
+			<label for="shape-color">Shape color:</label>
+			<input type="color" id="shape-color" value="#ff0000">
+
+			<label for="shape-position-left">X-axis position (%):</label>
+			<input type="number" id="shape-position-left" value="50" min="0" max="100" step="1">
+
+			<label for="shape-position-top">Y-axis position (%):</label>
+			<input type="number" id="shape-position-top" value="50" min="-50" max="100" step="1">
+
+			<label for="shape-rotate">Rotate (deg):</label>
+			<input type="number" id="shape-rotate" value="0" min="-180" max="180" step="1">
+
+			<label for="shape-z-index">Shape on top:</label>
+			<input type="checkbox" id="shape-z-index">
+		</fieldset>
+
+
+	<!-- Caption styling tools -->
+		<fieldset id="style-tools-logo" class="style-tools">
+			<legend>Caption Styling Tools</legend>
+
+			<label for="logo-text">Caption Text (50 max):</label>
+			<input type="text" id="logo-text" maxlength="50">
+
+			<label for="logo-font">Choose a font:</label>
+			<select id="logo-font">
+				<option value="Arial, sans-serif" selected="selected">--Select a font--</option>
+			</select>
+
+			<label for="logo-font-weight">Font Weight:</label>
+			<select id="logo-font-weight">
+				<option value="100">lighter</option>
+				<option value="300">light</option>
+				<option value="400" selected>normal</option>
+				<option value="700">bold</option>
+				<option value="800">bolder</option>
+				<option value="900">super bold</option>
+			</select>
+
+			<label for="logo-size">Font size:</label>
+			<input type="number" id="logo-size" value="40" min="2" max="800" step="1">
+
+			<label for="logo-color">Font color:</label>
+			<input type="color" id="logo-color" value="#000000">
+
+			<label for="logo-position-left">Position, X-axis (%):</label>
+			<input type="number" id="logo-position-left" value="50" min="0" max="100" step="1">
+
+			<label for="logo-position-top">Position, Y-axis (%):</label>
+			<input type="number" id="logo-position-top" value="50" min="-50" max="100" step="1">
+		</fieldset>
+
+
+	<!-- Logo Maker -->
+		<section id="logo-app">
+			<h4>Logo App</h4>
+			<figure id="canvas">
+				<figure id="shape"></figure>
+				<figcaption id="logo">Sample Logo Text</figcaption>
+			</figure>
+		</section>
+	</section>
+</main>
+<footer id="footer">
+	<small><script>document.write("©" + new Date().getFullYear())</script> Omar Juvera</small>
+</footer>
+</body>
+</html>
