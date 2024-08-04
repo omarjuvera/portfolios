@@ -1,0 +1,87 @@
+/* DOCUMENT INFORMATION
+	- Document:	Tabs CSS Styles
+	- Version:	1.2.4
+	- Project:	Santa Monica College - Logo Maker
+	- Author:	Omar Juvera
+*/
+
+
+/* Tabs */
+.tabs {
+	display: flex;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+.tab {
+	padding: 10px 20px;
+	background-color: #f1f1f1;
+	background-color: #00c4ff20;
+	border: 1px solid #ccc;
+	margin-right: 5px;
+}
+.tab.active {
+	background-color: #00c4ff80;
+}
+.tab-content {
+	display: none;
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+.tab-content.active {
+	display: block;
+}
+
+
+
+/* Font Samples 
+fieldset legend
+*/
+/* Styling Tools */
+.style-tools, fieldset {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-color: #00c4ff80
+	}
+	.style-tools legend, fieldset legend {
+		background-color: purple;
+		color: white;
+		border: 1px #00c4ff20 solid;
+		margin-left: 1em;
+		padding: 0.2em 0.8em 
+}
+.style-tools {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.style-tools label {
+	display: block;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+.style-tools input, .style-tools select {
+	margin-right: 10px;
+	margin-top: 10px;
+	padding: 5px;
+}
+
+
+/* Tab: Font Samples */
+.masonry {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 10px;
+}
+.masonry-item {
+	border: 1px solid #ddd;
+	padding: 10px;
+	background-color: #fff;
+}
+.masonry-item p {
+	margin: 0;
+}
+.masonry-item .font-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}

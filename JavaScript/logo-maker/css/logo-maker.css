@@ -1,0 +1,38 @@
+/* DOCUMENT INFORMATION
+	- Document:	Main Project's CSS Styles
+	- Version:	1.2.4
+	- Project:	Santa Monica College - Logo Maker
+	- Author:	Omar Juvera
+*/
+
+
+#canvas {
+	position: relative;
+	max-width: 800px;
+	height: 400px;
+	border: solid black 2px;
+/*
+*/
+}
+#shape{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 750px;
+	/*
+	width: 100px; /* Need a specific value to work */
+	z-index: 1;
+}
+#logo {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 750px;
+	/*
+	width: 90%; /* Need a specific value to work */
+	z-index: 2;
+
+	font-size: 40px;
+}

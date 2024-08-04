@@ -1,0 +1,39 @@
+/* DOCUMENT INFORMATION
+	- Document:	Main Index CSS Styles
+	- Version:	1.2.4
+	- Project:	Santa Monica College - Logo Maker
+	- Author:	Omar Juvera
+*/
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin-left: 20px;
+	margin-right: 20px;
+	}
+	h1, h2, h3, h4 {
+		font-family: "poppins",sans-serif;
+		color: #004c98;
+	}
+	header h1 { margin-bottom: 0px; }
+	header h2 { 
+		margin-top: 0px;
+		margin-bottom: 60px;
+}
+main {
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
