@@ -7,109 +7,128 @@
 	<meta name="keywords" content="OSI model, TCP/IP model, network layers, networking comparison, network protocols, network comparison">
 	<meta name="author" content="Omar Juvera">
 	<title>Comparing OSI and TCP/IP Networking Models</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        table {
-            width: 400px;
-            border-collapse: collapse;
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 20px;
+		}
+		h1, h2, h3 {
+			color: #333;
+		}
+		table {
+			width: 400px;
+			border-collapse: collapse;
 			margin: 0 auto;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
+		}
+		table, th, td {
+			border: 1px solid black;
+		}
+		th, td {
+			padding: 10px;
+			text-align: center;
 			white-space: nowrap;
-        }
-        th {
-            background-color: #f4b41a;
-            background-color: #a4a5a6;
-            color: white;
-        }
+		}
+		th {
+			background-color: #f4b41a;
+			background-color: #a4a5a6;
+			color: white;
+		}
 
 		.em { font-style: italic; }
 		.color-banana { background-color: #fbeeb8; }
 		.color-rose { background-color: #f8cac6; }
 		.color-skyblue { background-color: skyblue; }
 		.color-green { background-color: LightGreen; }
-    </style>
+		footer.author {
+			font-style: italic;
+			text-align: right;
+			margin-top: 20px;
+		}
+	</style>
 </head>
 <body>
-	<article>
+	<header>
 		<h1>Comparing OSI and TCP/IP Networking Models</h1>
-		<p>The internet can be metaphorically viewed as a global, highly-organized data delivery system. In this system, users function like customers placing orders for products.</p>
+	</header>
+	<main>
+		<article>
+			<h2>Introduction</h2>
+			<p>The internet can be metaphorically viewed as a global, highly-organized data delivery system. In this system, users function like customers placing orders for products.</p>
 
-		<table>
-			<tr style="background-color: #f2f2f2;">
-				<th>OSI Model</th>
-				<th>TCP/IP Model</th>
-			</tr>
-			<tr class="color-banana">
-				<td>Application</td>
-				<td rowspan="3">Application</td>
-			</tr>
-			<tr class="color-banana">
-				<td>Presentation</td>
-				<!-- Rowspaned td></td -->
-			</tr>
-			<tr class="color-banana">
-				<td>Session</td>
-				<!-- Rowspaned td></td -->
-			</tr>
-			<tr class="color-rose">
-				<td>Transport</td>
-				<td>Transport</td>
-			</tr>
-			<tr class="color-skyblue">
-				<td>Network</td>
-				<td>Network</td>
-			</tr>
-			<tr class="color-green">
-				<td>Data Link</td>
-				<td rowspan="2">Network Interface</td>
-			</tr>
-			<tr class="color-green">
-				<td>Physical</td>
-				<!-- Rowspaned td></td -->
-			</tr>
-		</table>
+			<section>
+			<h2>Comparison Table</h2>
+			<table>
+				<tr style="background-color: #f2f2f2;">
+					<th>OSI Model</th>
+					<th>TCP/IP Model</th>
+				</tr>
+				<tr class="color-banana">
+					<td>Application</td>
+					<td rowspan="3">Application</td>
+				</tr>
+				<tr class="color-banana">
+					<td>Presentation</td>
+					<!-- Rowspaned td></td -->
+				</tr>
+				<tr class="color-banana">
+					<td>Session</td>
+					<!-- Rowspaned td></td -->
+				</tr>
+				<tr class="color-rose">
+					<td>Transport</td>
+					<td>Transport</td>
+				</tr>
+				<tr class="color-skyblue">
+					<td>Network</td>
+					<td>Network</td>
+				</tr>
+				<tr class="color-green">
+					<td>Data Link</td>
+					<td rowspan="2">Network Interface</td>
+				</tr>
+				<tr class="color-green">
+					<td>Physical</td>
+					<!-- Rowspaned td></td -->
+				</tr>
+			</table>
+			</section>
 
-		<h2>In this analogy:</h2>
-		<ul>
-			<li><strong>Application Layer (OSI/TCP):</strong> This layer represents the interface where customers interact with the web application. Customers place their orders here, and it ensures that requests (like data) are initiated and properly delivered. The web app itself functions as an intermediary between the user and the backend servers that manage order details.</li>
-			<li><strong>Presentation Layer (OSI):</strong> Although absent in the TCP/IP model, this layer in OSI is responsible for data formatting and encryption. It ensures the user sees the interface as intended, just as product pages and order details are presented with the correct layout (CSS) and encoded securely for the customer.</li>
-			<li><strong>Session Layer (OSI):</strong> This layer manages and maintains communication sessions, similar to how systems maintain a user’s login session to track their cart and purchase history throughout their visit.</li>
-			<li><strong>Transport Layer (OSI/TCP):</strong> This layer ensures the reliable delivery of data packets, much like internal coordination to package products. Organizations organize their workforce and logistics to prepare and ship orders reliably, just as data packets are properly ordered and checked during transmission.</li>
-			<li><strong>Network Layer (OSI/TCP):</strong> This layer determines how data moves between different networks, similar to coordinating between different warehouses and shipping providers. It decides the best path for delivery, ensuring products (or data) arrive at the correct destination.</li>
-			<li><strong>Data Link Layer (OSI) / Network Interface (TCP):</strong> These layers are responsible for the physical addressing and error handling in network transmission. This is akin to the labeling and tracking of products within the warehouse and across shipping routes, ensuring the correct handling and routing to avoid mistakes.</li>
-			<li><strong>Physical Layer (OSI):</strong> This layer deals with the actual transmission of raw bits over a physical medium, comparable to the physical infrastructure—the warehouses, trucks, and delivery routes that enable the transfer of goods.</li>
-		</ul>
+			<section>
+				<h2>Layer Analogies</h2>
+				<ol>
+					<li><strong>Application Layer (OSI/TCP):</strong> This layer represents the interface where customers interact with the web application. Customers place their orders here, and it ensures that requests (like data) are initiated and properly delivered. The web app itself functions as an intermediary between the user and the backend servers that manage order details.</li>
+					<li><strong>Presentation Layer (OSI):</strong> Although absent in the TCP/IP model, this layer in OSI is responsible for data formatting and encryption. It ensures the user sees the interface as intended, just as product pages and order details are presented with the correct layout (CSS) and encoded securely for the customer.</li>
+					<li><strong>Session Layer (OSI):</strong> This layer manages and maintains communication sessions, similar to how systems maintain a user’s login session to track their cart and purchase history throughout their visit.</li>
+					<li><strong>Transport Layer (OSI/TCP):</strong> This layer ensures the reliable delivery of data packets, much like internal coordination to package products. Organizations organize their workforce and logistics to prepare and ship orders reliably, just as data packets are properly ordered and checked during transmission.</li>
+					<li><strong>Network Layer (OSI/TCP):</strong> This layer determines how data moves between different networks, similar to coordinating between different warehouses and shipping providers. It decides the best path for delivery, ensuring products (or data) arrive at the correct destination.</li>
+					<li><strong>Data Link Layer (OSI) / Network Interface (TCP):</strong> These layers are responsible for the physical addressing and error handling in network transmission. This is akin to the labeling and tracking of products within the warehouse and across shipping routes, ensuring the correct handling and routing to avoid mistakes.</li>
+					<li><strong>Physical Layer (OSI):</strong> This layer deals with the actual transmission of raw bits over a physical medium, comparable to the physical infrastructure—the warehouses, trucks, and delivery routes that enable the transfer of goods.</li>
+				</ol>
+				<p>Just as each layer in the OSI/TCP model has a vital role in transferring data, every department in an organization plays a critical role in ensuring products are delivered to the right customer, on time.</p>
+			</section>
 
-		<p>Just as each layer in the OSI/TCP model has a vital role in transferring data, every department in an organization plays a critical role in ensuring products are delivered to the right customer, on time.</p>
+			<section>
+				<h2>Summary Comparison</h2>
 
-		<h2>Summary Comparison of TCP/IP vs OSI Models in Networking</h2>
+				<h3>OSI Model</h3>
+				<p>The OSI model consists of seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. While not "open source" in the software sense, OSI is a non-commercial and open framework, designed for universal use without licensing fees or restrictions. It offers a detailed approach for understanding how different networking protocols function, breaking down processes like routing and data formatting.</p>
 
-		<h3>OSI Model</h3>
-		<p>The OSI model consists of seven layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application. While not "open source" in the software sense, OSI is a non-commercial and open framework, designed for universal use without licensing fees or restrictions. It offers a detailed approach for understanding how different networking protocols function, breaking down processes like routing and data formatting.</p>
+				<h3>TCP/IP Model</h3>
+				<p>The TCP/IP model, in contrast, has four layers: Network Access, Internet, Transport, and Application. It is more streamlined than the OSI model, focusing primarily on practical communication protocols, with its Internet layer corresponding to the Network layer in the OSI model. Today, TCP/IP is the standard for internet communications, while the OSI model serves more as a conceptual guide for understanding network operations.</p>
+			</section>
 
-		<h3>TCP/IP Model</h3>
-		<p>The TCP/IP model, in contrast, has four layers: Network Access, Internet, Transport, and Application. It is more streamlined than the OSI model, focusing primarily on practical communication protocols, with its Internet layer corresponding to the Network layer in the OSI model. Today, TCP/IP is the standard for internet communications, while the OSI model serves more as a conceptual guide for understanding network operations.</p>
-
-		<div id="sources">
-			<p class="em">Sources:</p>
-			<ul>
-				<li><a href="https://www.networkstraining.com/comparison-of-tcp-ip-vs-osi-models/">NetworksTraining.com: Comparison of TCP/IP vs OSI Models in Networking</a></li>
-				<li><a href="https://www.guru99.com/difference-tcp-ip-vs-osi-model.html">Guru99.com: TCP/IP vs OSI Model – Difference Between Them</a></li>
-			</ul>
-		</div>
+			<section id="sources" class="em">
+				<h2>Sources</h2>
+					<ul>
+						<li><a href="https://www.networkstraining.com/comparison-of-tcp-ip-vs-osi-models/">NetworksTraining.com: Comparison of TCP/IP vs OSI Models in Networking</a></li>
+						<li><a href="https://www.guru99.com/difference-tcp-ip-vs-osi-model.html">Guru99.com: TCP/IP vs OSI Model – Difference Between Them</a></li>
+					</ul>
+			</section>
 		</article>
+	</main>
+	<footer class="author">
+		<p>Author: Omar Juvera</p>
+	</footer>
 </body>
 </html>
