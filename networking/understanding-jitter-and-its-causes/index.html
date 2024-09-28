@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Understanding jitter, its causes, and solutions in network communication.">
+	<meta name="keywords" content="jitter, network communication, Wi-Fi, audio quality, signal degradation">
+	<meta name="author" content="Omar Juvera">
+	<title>Understanding Jitter and Its Causes</title>
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
+			color: #333;
+		}
+		header {
+			background: #2c3e50;
+			color: #ffffff;
+			padding: 10px 0;
+			text-align: center;
+		}
+		h1 { color: #ecf0f1; }
+		h2 { color: #35424a; }
+		main {
+			padding: 20px;
+			margin: 20px;
+			background: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		}
+		ol, ul {
+			margin: 20px 0;
+			padding-left: 20px;
+		}
+		footer {
+			text-align: center;
+			padding: 10px 0;
+			background: #2c3e50;
+			color: #ffffff;
+			position: relative;
+			bottom: 0;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Understanding Jitter and Its Causes</h1>
+	</header>
+	<main>
+		<section>
+			<h2>What is Jitter?</h2>
+			<p>Jitter occurs when there's inconsistency in the signal's timing, amplitude, or width as well as the signals are passed from one device to another. For example, when a signal is converted from 5 GHz to 2.4 GHz, the signal often experiences changes in amplitude and bandwidth, with minor timing issues due to conversion delays.</p>
+		</section>
+
+		<section>
+			<h2>Common Causes of Jitter</h2>
+			<ol>
+				<li><strong>Hardware Issues:</strong>
+					<ul>
+						<li>Outdated software or firmware.</li>
+						<li>Old or malfunctioning network equipment.</li>
+						<li>Misplaced hardware:
+							<ul>
+								<li>Positioned near electronic equipment (e.g., microwaves, wireless phones).</li>
+								<li>Insufficient airflow or ventilation, leading to overheating.</li>
+								<li>Dusty environments causing overheating.</li>
+								<li>Areas where signal transmission is obstructed.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><strong>Insufficient Bandwidth:</strong> Switching from 5 GHz to 2.4 GHz significantly reduces bandwidth. The 2.4 GHz spectrum has fewer channels and can easily become overcrowded, leading to jitter.</li>
+				<li><strong>Poor Wireless Connection:</strong> Low wireless signal strength can impact performance, increasing the likelihood of jitter. Think of it like having only one bar of signal on your phone—everything lags.</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2>Industry Standard Performance Benchmarks</h2>
+			<ul>
+				<li>Jitter: Below 30ms (<30ms).</li>
+				<li>Packet Loss: Less than 1% (<1%).</li>
+				<li>Network Latency: Below 150ms (<150ms).</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>Real-Time Impact</h2>
+			<p>Jitter mostly affects real-time communication, such as voice and video calls, because delays disrupt conversations or cause video lag. In contrast, activities like emailing are not immediately impacted, as these do not require continuous, real-time transmission.</p>
+		</section>
+
+		<section>
+			<h2>Ways to Reduce Jitter</h2>
+			<ul>
+				<li>Buffering: Utilize jitter buffering techniques.</li>
+				<li>Software/Firmware Update: Ensure routers and network equipment are up to date.</li>
+				<li>Improved Ventilation: Keep hardware in areas with good airflow to avoid overheating.</li>
+				<li>Upgraded Hardware: Update old routers and ethernet cables (current standard: CAT8).</li>
+				<li>Wi-Fi Optimization:
+					<ul>
+						<li>Create a Wi-Fi map using tools like Wi-Fi Analyzer or other Wi-Fi mapping software.</li>
+						<li>Relocate hardware to avoid signal interference.</li>
+						<li>Switch to less crowded Wi-Fi channels.</li>
+						<li>Enable the 5 GHz band for improved performance.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>Most people don’t map their Wi-Fi, which is like trying to find your way through the jungle without a map! So, next time your audio starts skipping, take a look at where your router's chilling. It might just need a cooler spot to breathe or be placed in a more strategic area. Sometimes the simplest (and cost-free/less expensive) solution is the best solution.</p>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2024 Omar Juvera. All rights reserved.</p>
+	</footer>
+</body>
+</html>
