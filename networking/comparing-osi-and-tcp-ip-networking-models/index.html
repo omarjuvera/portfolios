@@ -11,11 +11,40 @@
 		body {
 			font-family: Arial, sans-serif;
 			line-height: 1.6;
-			margin: 20px;
-		}
-		h1, h2, h3 {
+			margin: 0;
+			padding: 0;
+			background-color: #f4f4f4;
 			color: #333;
 		}
+		body > header {
+			background: #2c3e50;
+			color: #ffffff;
+			padding: 10px 0;
+			text-align: center;
+		}
+		body > header > h1 { color: #ecf0f1; }
+		h1, h2, h3 { color: #35424a; }
+		main {
+			padding: 20px;
+			margin: 20px;
+			background: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+		}
+		ol, ul {
+			margin: 20px 0;
+			padding-left: 20px;
+		}
+		footer {
+			text-align: center;
+			padding: 10px 0;
+			background: #2c3e50;
+			color: #ffffff;
+			position: relative;
+			bottom: 0;
+			width: 100%;
+		}
+
 		table {
 			width: 400px;
 			border-collapse: collapse;
@@ -40,58 +69,60 @@
 		.color-rose { background-color: #f8cac6; }
 		.color-skyblue { background-color: skyblue; }
 		.color-green { background-color: LightGreen; }
-		footer.author {
-			font-style: italic;
-			text-align: right;
-			margin-top: 20px;
-		}
 	</style>
 </head>
 <body>
 	<header>
 		<h1>Comparing OSI and TCP/IP Networking Models</h1>
 	</header>
+
 	<main>
 		<article>
-			<h2>Introduction</h2>
-			<p>The internet can be metaphorically viewed as a global, highly-organized Amazon (data) delivery system. In this system, internet users function like Amazon customers placing orders for products.</p>
+			<header>
+				<h2>Understanding Networking Models</h2>
+			</header>
 
 			<section>
-			<h2>Comparison Table</h2>
-			<table>
-				<tr style="background-color: #f2f2f2;">
-					<th>OSI Model</th>
-					<th>TCP/IP Model</th>
-				</tr>
-				<tr class="color-banana">
-					<td>Application</td>
-					<td rowspan="3">Application</td>
-				</tr>
-				<tr class="color-banana">
-					<td>Presentation</td>
-					<!-- Rowspaned td></td -->
-				</tr>
-				<tr class="color-banana">
-					<td>Session</td>
-					<!-- Rowspaned td></td -->
-				</tr>
-				<tr class="color-rose">
-					<td>Transport</td>
-					<td>Transport</td>
-				</tr>
-				<tr class="color-skyblue">
-					<td>Network</td>
-					<td>Network</td>
-				</tr>
-				<tr class="color-green">
-					<td>Data Link</td>
-					<td rowspan="2">Network Interface</td>
-				</tr>
-				<tr class="color-green">
-					<td>Physical</td>
-					<!-- Rowspaned td></td -->
-				</tr>
-			</table>
+				<h2>Introduction</h2>
+				<p>The internet can be metaphorically viewed as a global, highly-organized Amazon (data) delivery system. In this system, internet users function like Amazon customers placing orders for products.</p>
+			</section>
+
+			<section>
+				<h2>Comparison Table</h2>
+				<table>
+					<tr style="background-color: #f2f2f2;">
+						<th>OSI Model</th>
+						<th>TCP/IP Model</th>
+					</tr>
+					<tr class="color-banana">
+						<td>Application</td>
+						<td rowspan="3">Application</td>
+					</tr>
+					<tr class="color-banana">
+						<td>Presentation</td>
+						<!-- Rowspaned td></td -->
+					</tr>
+					<tr class="color-banana">
+						<td>Session</td>
+						<!-- Rowspaned td></td -->
+					</tr>
+					<tr class="color-rose">
+						<td>Transport</td>
+						<td>Transport</td>
+					</tr>
+					<tr class="color-skyblue">
+						<td>Network</td>
+						<td>Network</td>
+					</tr>
+					<tr class="color-green">
+						<td>Data Link</td>
+						<td rowspan="2">Network Interface</td>
+					</tr>
+					<tr class="color-green">
+						<td>Physical</td>
+						<!-- Rowspaned td></td -->
+					</tr>
+				</table>
 			</section>
 
 			<section>
@@ -125,18 +156,10 @@
 					<li>Today, TCP/IP is the standard for internet communications, while the OSI model serves more as a conceptual guide for understanding network operations.</li>
 				</ul>
 			</section>
-
-			<section id="sources" class="em">
-				<h2>Sources</h2>
-					<ul>
-						<li><a href="https://www.networkstraining.com/comparison-of-tcp-ip-vs-osi-models/">NetworksTraining.com: Comparison of TCP/IP vs OSI Models in Networking</a></li>
-						<li><a href="https://www.guru99.com/difference-tcp-ip-vs-osi-model.html">Guru99.com: TCP/IP vs OSI Model – Difference Between Them</a></li>
-					</ul>
-			</section>
 		</article>
 	</main>
-	<footer class="author">
-		<p>Author: Omar Juvera</p>
+	<footer>
+		<p>&copy; <script>document.write(new Date().getFullYear());</script><noscript>2024</noscript> Omar Juvera. All rights reserved.</p>
 	</footer>
 </body>
 </html>
