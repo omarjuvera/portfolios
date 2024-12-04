@@ -1,4 +1,6 @@
+=======================================
 Step 1: Setup your AWS EC2 Instance
+=======================================
 Use Ubuntu LTS Server AMI 
 Allow SSH, HTTP, HTTPS
 
@@ -16,14 +18,26 @@ Step 2: Install Apache Web Server
 =======================================
 sudo apt install apache2 -y
 sudo systemctl enable apache2
-sudo systemctl status apache2
-sudo ufw allow 'Apache Full'
-	allows both incoming and outgoing traffic on the required ports (80 for HTTP and 443 for HTTPS).
+sudo systemctl status apache2 --no-pager
+
+	sudo ufw app list
+sudo ufw allow 'Apache Secure'
+sudo ufw app info 'Apache Secure'
+	OR
+
+		sudo ufw app list
+	sudo ufw allow 'Apache Full'
+		allows both incoming and outgoing traffic on the required ports (80 for HTTP and 443 for HTTPS).
+	sudo ufw app info 'Apache Full'
+		make sure ports [80,443/tcp] are listed
+
 sudo ufw enable
 
 sudo apt update -y && sudo apt upgrade -y
 	Run this as many times as needed until you see this:
 	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+sudo systemctl restart apache2 && sudo systemctl status apache2 --no-pager
 
 =======================================
 Step 3: Install MySQL
@@ -32,29 +46,128 @@ Step 3: Install MySQL
 sudo apt install mariadb-server -y
 
 	However, if you still insist in using the OG MySQL
-sudo apt install mysql-server -y
+	sudo apt install mysql-server -y
 
 sudo mysql_secure_installation
+sudo systemctl enable mariadb 
+sudo systemctl restart mariadb && sudo systemctl status mariadb --no-pager
 
 sudo apt update -y && sudo apt upgrade -y
 	Run this as many times as needed until you see this:
 	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+sudo systemctl restart apache2 && sudo systemctl status apache2 --no-pager
 
 =======================================
 Step 4: Install PHP
 =======================================
 sudo apt install php libapache2-mod-php php-mysql -y
 php -v
-sudo systemctl restart apache2
 
 sudo apt update -y && sudo apt upgrade -y
 	Run this as many times as needed until you see this:
 	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 
+sudo systemctl restart apache2 && sudo systemctl status apache2 --no-pager
+
+===
+Step 4.2: Test PHP
+===
+sudo nano /var/www/html/info.php
+	replace the content for this:
+<?php
+phpinfo();
+?>
+
+http://your_server_ip/info.php
+
+
 =======================================
-Step 4: Install PHP
+Step 5: Configure Apache to work with PHP
 =======================================
 sudo nano /etc/apache2/mods-enabled/dir.conf
 	Ensure index.php is listed first (right after DirectoryIndex)
 	DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+sudo systemctl restart apache2 && sudo systemctl status apache2 --no-pager
+
+=======================================
+Step 6: Enable HTTPS (via Apache configuration)
+=======================================
+sudo a2enmod ssl
+sudo a2ensite default-ssl
+sudo apt install certbot python3-certbot-apache -y
+sudo certbot --apache
+
+	See /usr/share/doc/apache2/README.Debian.gz on how to configure SSL and create self-signed certificates.
+
+	Simplified, for beguiners:
+sudo apt install certbot python3-certbot-apache -y
+sudo certbot --apache
+sudo systemctl reload apache2
+sudo systemctl status apache2 --no-pager
+
+=======================================
+Step 7.0: Install WordPress
+=======================================
+sudo mysql -u root -p
+
+CREATE DATABASE wordpress;
+CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'your_secure_password';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+wget https://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz
+
+sudo cp wordpress/wp-config-sample.php wordpress/wp-config.php
+sudo nano wordpress/wp-config.php
+sudo mv wordpress/* /var/www/html/
+
+sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/
+
+	sudo cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+	sudo nano /var/www/html/wp-config.php
+
+define( 'DB_NAME', 'wordpress' );
+define( 'DB_USER', 'wpuser' );
+define( 'DB_PASSWORD', 'your_password' );
+
+===
+Step 6.2: Self Signed Certificate
+===
+sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 365
+	Final+WordPress
+
+	Country Name (2 letter code) [AU]:us
+	State or Province Name (full name) [Some-State]:ca
+	Locality Name (eg, city) []:Los Angeles
+	Organization Name (eg, company) [Internet Widgits Pty Ltd]:SMC-CS79B-WordPress-Final
+	Organizational Unit Name (eg, section) []:CS79B
+	Common Name (e.g. server FQDN or YOUR name) []:LAMP+WordPress Final Project
+	Email Address []:no@email.address
+
+X. If you made a mistake on the questions, re-generate the certificate
+sudo openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/private/selfsigned.key -out /etc/ssl/certs/selfsigned.crt -days 365
+sudo a2enmod ssl
+sudo a2ensite default-ssl.conf
 sudo systemctl restart apache2
+sudo systemctl status apache2 --no-pager
+
+
+===
+Step 6.3: Redirect HTTP to HTTPS:
+===
+sudo nano /etc/apache2/sites-available/000-default.conf
+
+Add a redirect rule at the end of the file before </VirtualHost>:
+
+<VirtualHost *:80>
+    Redirect permanent / https://your-server-ip/
+</VirtualHost>
+
+	Replace your-server-ip with your actual IP or domain.
+
+sudo systemctl restart apache2
+sudo systemctl status apache2 --no-pager

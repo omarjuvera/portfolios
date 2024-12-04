@@ -1,0 +1,23 @@
+=================================================
+Fixing the PHP Limits
+=================================================
+
+1. Check Current PHP Settings: Run the following in your terminal to find your PHP configuration file path:
+
+php -i | grep "Loaded Configuration File"
+Open the file:
+
+sudo nano /etc/php/<version>/apache2/php.ini
+
+Adjust Limits: Update the following values in php.ini:
+
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 300
+Replace <version> with your PHP version, e.g., 7.4.
+
+Restart Apache: Apply the changes:
+
+sudo systemctl restart apache2
+Retry Installation: Go back to the WordPress dashboard and try uploading the Divi ZIP file again.
+
