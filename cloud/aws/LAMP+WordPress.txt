@@ -1,0 +1,60 @@
+Step 1: Setup your AWS EC2 Instance
+Use Ubuntu LTS Server AMI 
+Allow SSH, HTTP, HTTPS
+
+sudo apt update -y && sudo apt upgrade -y
+	Run this as many times as needed until you see this:
+	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+sudo reboot
+sudo apt update -y && sudo apt upgrade -y
+	Run this as many times as needed until you see this:
+	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+=======================================
+Step 2: Install Apache Web Server
+=======================================
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl status apache2
+sudo ufw allow 'Apache Full'
+	allows both incoming and outgoing traffic on the required ports (80 for HTTP and 443 for HTTPS).
+sudo ufw enable
+
+sudo apt update -y && sudo apt upgrade -y
+	Run this as many times as needed until you see this:
+	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+=======================================
+Step 3: Install MySQL
+=======================================
+	It is highly recommended you use MariaDB instead of the traditional Oracle's MySQL.
+sudo apt install mariadb-server -y
+
+	However, if you still insist in using the OG MySQL
+sudo apt install mysql-server -y
+
+sudo mysql_secure_installation
+
+sudo apt update -y && sudo apt upgrade -y
+	Run this as many times as needed until you see this:
+	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+=======================================
+Step 4: Install PHP
+=======================================
+sudo apt install php libapache2-mod-php php-mysql -y
+php -v
+sudo systemctl restart apache2
+
+sudo apt update -y && sudo apt upgrade -y
+	Run this as many times as needed until you see this:
+	0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+=======================================
+Step 4: Install PHP
+=======================================
+sudo nano /etc/apache2/mods-enabled/dir.conf
+	Ensure index.php is listed first (right after DirectoryIndex)
+	DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+sudo systemctl restart apache2
