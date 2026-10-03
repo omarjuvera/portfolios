@@ -1,0 +1,44 @@
+{
+	"project": "MLRTT",
+	"course": "CS 79F (1737) — Machine Learning on AWS",
+	"source_archive": "MLRTT-transcribeAudio.zip",
+	"source_archive_sha256": "cf7e55e180210c23befe864a595f694a1eed7ced68fddf2b548abea9b8926b75",
+	"transcription_status": "COMPLETED",
+	"detected_language": "en-US",
+	"transcript_word_count": 4101,
+	"translation_languages": [
+		"en",
+		"es",
+		"ko"
+	],
+	"audio_outputs": [
+		{
+			"file": "english.mp3",
+			"bytes": 6308609,
+			"sha256": "2b028ec6020ef4bd49e2da9b6dd8f02acc8acc456d043df36026920c71012145"
+		},
+		{
+			"file": "korean.mp3",
+			"bytes": 7212193,
+			"sha256": "8701eef827ec523aa9c13f7ac11aff32e0e86eb52cbafd9fca8b5e85023b1cb9"
+		},
+		{
+			"file": "original.mp3",
+			"bytes": 6314213,
+			"sha256": "b5f4cd38c0780e059bf83dce3b0a6d42210637d95dd20666d820c912d575c085"
+		},
+		{
+			"file": "spanish.mp3",
+			"bytes": 6652350,
+			"sha256": "ae25790b08cec509e1b42a74649eb75e1e6fde23acfa2ab80473c6f61dca74cf"
+		}
+	],
+	"source_mapping": {
+		"Working-lattest/MLRTT-transcribeAudio.py": "source/transcribe_audio.py",
+		"translateAndSynthesize/translateAndSynthesize_v1-2.py": "source/translate_and_synthesize_v1_2.py",
+		"lds_terms.py": "source/lds_terms_fragment.txt"
+	},
+	"scope": "Uploaded-video batch prototype; continuous live streaming not implemented.",
+	"community_use": "Demonstrated project; church declined AWS adoption due to ongoing cost and chose Zoom.",
+	"publication_note": "Manifest describes inspected local artifacts; raw congregation audio/transcripts, AWS policies/account identifiers and bundled FFmpeg binaries are not included."
+}

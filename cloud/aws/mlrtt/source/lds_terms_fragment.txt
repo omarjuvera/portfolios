@@ -1,0 +1,209 @@
+dictionary_cache = {
+	"ordinance": {
+		"es": "ordenanza",
+		"ko": "종교 의식"
+	},
+	"baptism": {
+		"es": "bautismo",
+		"ko": "세례"
+	},
+	"confirmation": {
+		"es": "confirmación",
+		"ko": "성령의 축복"
+	},
+	"endowment": {
+		"es": "endowamiento",
+		"ko": "성취"
+	},
+	"sealing": {
+		"es": "sealado",
+		"ko": "결속"
+	},
+	"temple": {
+		"es": "templo",
+		"ko": "성전"
+	},
+	"priesthood": {
+		"es": "sacerdocio",
+		"ko": "신권"
+	},
+	"apostle": {
+		"es": "apóstol",
+		"ko": "신자"
+	},
+	"prophet": {
+		"es": "profeta",
+		"ko": "선지자"
+	},
+	"bishop": {
+		"es": "obispo",
+		"ko": "감독"
+	},
+	"stake": {
+		"es": "régimen",
+		"ko": "지방"
+	},
+	"stake president": {
+		"es": "presidente de régimen",
+		"ko": "지방장"
+	},
+	"high council": {
+		"es": "consejo superior",
+		"ko": "고등회"
+	},
+	"ward": {
+		"es": "parroquia",
+		"ko": "구역"
+	},
+	"ward council": {
+		"es": "consejo parroquial",
+		"ko": "구역회"
+	},
+	"bishopric": {
+		"es": "obispado",
+		"ko": "감독부"
+	},
+	"ward mission leader": {
+		"es": "líder de misión parroquial",
+		"ko": "구역선교지도자"
+	},
+	"elders quorum": {
+		"es": "cuórum de ancianos",
+		"ko": "장로회"
+	},
+	"relief society": {
+		"es": "sociedad de auxilio",
+		"ko": "구조회"
+	},
+	"young men": {
+		"es": "jóvenes varones",
+		"ko": "청년부"
+	},
+	"young women": {
+		"es": "jóvenes mujeres",
+		"ko": "청년부"
+	},
+	"Primary": {
+		"es": "Primaria",
+		"ko": "유치부"
+	},
+	"Sunday School": {
+		"es": "Escuela dominical",
+		"ko": "주일학교"
+	},
+	"ward clerk": {
+		"es": "secretario parroquial",
+		"ko": "구역사무원"
+	},
+	"ward treasurer": {
+		"es": "tesorero parroquial",
+		"ko": "구역재산관"
+	},
+	"ward mission leader": {
+		"es": "líder de misión parroquial",
+		"ko": "구역선교지도자"
+	},
+	"stake mission leader": {
+		"es": "líder de misión régimen",
+		"ko": "지방선교지도자"
+	},
+	"missionary": {
+		"es": "misionero",
+		"ko": "선교사"
+	},
+	"mission president": {
+		"es": "presidente de misión",
+		"ko": "선교지장"
+	},
+	"temple president": {
+		"es": "presidente de templo",
+		"ko": "성전장"
+	},
+	"area president": {
+		"es": "presidente de área",
+		"ko": "지역장"
+	},
+	"general authority": {
+		"es": "autoridad general",
+		"ko": "일반권위자"
+	},
+	"seventy": {
+		"es": "setenta",
+		"ko": "칠십인"
+	},
+	"high priest": {
+		"es": "sacerdote",
+		"ko": "고등사제"
+	},
+	"elder": {
+		"es": "anciano",
+		"ko": "장로"
+	},
+	"priest": {
+		"es": "sacerdote",
+		"ko": "사제"
+	},
+	"teacher": {
+		"es": "maestro",
+		"ko": "교사"
+	},
+	"deacon": {
+		"es": "diácono",
+		"ko": "사도"
+	},
+	"ward member": {
+		"es": "miembro parroquial",
+		"ko": "구역원"
+	},
+	"stake member": {
+		"es": "miembro régimen",
+		"ko": "지방원"
+	},
+	"ward bishop": {
+		"es": "obispo parroquial",
+		"ko": "구역감독"
+	},
+	"stake bishop": {
+		"es": "obispo régimen",
+		"ko": "지방감독"
+	},
+	"high councilor": {
+		"es": "consejero superior",
+		"ko": "고등회원"
+	},
+	"ward councilor": {
+		"es": "consejero parroquial",
+		"ko": "구역회원"
+	},
+	"stake councilor": {
+		"es": "consejero régimen",
+		"ko": "지방회원"
+	},
+	"ward clerk": {
+		"es": "secretario parroquial",
+		"ko": "구역사무원"
+	},
+	"ward treasurer": {
+		"es": "tesorero parroquial",
+		"ko": "구역재산관"
+	},
+	"ward mission leader": {
+		"es": "líder de misión parroquial",
+		"ko": "구역선교지도자"
+	},
+	"stake mission leader": {
+		"es": "líder de misión régimen",
+		"ko": "지방선교지도자"
+	},
+	"missionary": {
+		"es": "misionero",
+		"ko": "선교사"
+	},
+	"mission president": {
+		"es": "presidente de misión",
+		"ko": "선교지장"
+	},
+	"temple president": {
+		"es": "presidente de templo",
+		"ko": "성전장"
+	}
